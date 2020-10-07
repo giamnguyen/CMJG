@@ -14,11 +14,11 @@ const Tab2: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Photo Gallery : {username}</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <IonHeader collapse="condense">
+          <IonToolbar>
+            <IonTitle size="large">Drop-off Scan</IonTitle>
+          </IonToolbar>
+        </IonHeader>
       <IonContent fullscreen>
         <IonGrid>
           <IonRow>
@@ -34,11 +34,6 @@ const Tab2: React.FC = () => {
             <IonIcon icon={camera}></IonIcon>
           </IonFabButton>
         </IonFab>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Photos</IonTitle>
-          </IonToolbar>
-        </IonHeader>
       </IonContent>
     </IonPage>
   );

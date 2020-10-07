@@ -8,7 +8,7 @@ const INITIAL_STATE = {
   notifications: [{ id: 'id', title: "Test Push", body: "This is my first push notification" }],
 };
 
-export class PushNot extends React.Component {
+export class UserInfo extends React.Component {
   state: any = {};
   props: any = {};
   constructor(props: any) {
@@ -61,19 +61,11 @@ export class PushNot extends React.Component {
     const { notifications } = this.state;
     return (
       <IonPage>
-        <IonHeader>
-          <IonToolbar color="primary">
-            <IonTitle>Enappd</IonTitle>
-          </IonToolbar>
-          <IonToolbar color="medium">
-            <IonTitle>Ionic React Push Example</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+        <IonListHeader color="medium">
+          <IonLabel>User Information</IonLabel>
+        </IonListHeader>
         <IonContent className="ion-padding">
           <IonList>
-            <IonListHeader>
-              <IonLabel>Notifications</IonLabel>
-            </IonListHeader>
             {notifications && notifications.map((notif: any) =>
               <IonItem key={notif.id}>
                 <IonLabel>
@@ -95,4 +87,4 @@ export class PushNot extends React.Component {
     );
   };
 }
-export default PushNot;
+export default UserInfo;
