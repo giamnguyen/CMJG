@@ -25,6 +25,7 @@ import Tab3 from './pages/Tab3';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import UserInfo from './pages/UserInfo';
+import ConfirmDropOff from './pages/ConfirmDropOff';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -57,18 +58,15 @@ const App: React.FC = () =>  {
                 <Route path="/tab3" component={Tab3} />
                 <Route path="/register" component={Register} />
                 <Route path="/userInfo" component={UserInfo} />
+                <Route path="/confirmDrop" component={ConfirmDropOff} />
                 <Route path="/" render={() => <Redirect to="/login" />} exact={true} />
               </IonRouterOutlet>
               <IonTabBar slot="bottom">
-              <IonTabButton tab="login" href="/login">
-                <IonIcon icon={ellipse} />
-                <IonLabel>Login</IonLabel>
-              </IonTabButton>
               <IonTabButton tab="tab1" href="/tab1">
                   <IonIcon icon={homeOutline} />
                   <IonLabel>Home</IonLabel>
               </IonTabButton>
-              <IonTabButton tab="tab2" href="/tab2">
+              <IonTabButton tab="tab2" href="/confirmDrop">
                   <IonIcon icon={scanOutline} />
                   <IonLabel>Scanning</IonLabel>
               </IonTabButton>

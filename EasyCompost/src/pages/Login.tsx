@@ -22,7 +22,6 @@ const Login: React.FC = () => {
     //   setGlobalUsername(username)
     // }
     // setBusy(false)
-
     console.log('hahahah');
   }
 
@@ -37,7 +36,9 @@ const Login: React.FC = () => {
       <IonContent className="ion-padding">
         <IonInput placeholder="Username" onIonChange={(e: any) => setUsername(e.target.value)} />
         <IonInput type="password" placeholder="Password" onIonChange={(e: any) => setPassword(e.target.value)}/>
-        <IonButton onClick={login}>Login</IonButton>
+        <IonButton onClick={login}>
+          <Link to="/tab1" style={{ color: 'white' }}> Login</Link>
+        </IonButton>
         <p>
             Don't have an account? <Link to="/register">Register</Link>
         </p>
