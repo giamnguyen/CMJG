@@ -24,7 +24,6 @@ import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Home from './pages/Home';
 import UserInfo from './pages/UserInfo';
 import ConfirmDropOff from './pages/ConfirmDropOff';
 import Welcome from './pages/Welcome';
@@ -78,7 +77,7 @@ const App: React.FC = () =>  {
                   <IonTabs>
                     <IonRouterOutlet>
                       <Route
-                        path="/tabs/tab1"
+                        path="/tabs/home"
                         component={Tab1}
                         exact={true}
                       />
@@ -104,7 +103,7 @@ const App: React.FC = () =>  {
                       />
                     </IonRouterOutlet>
                     <IonTabBar slot="bottom">
-                      <IonTabButton tab="tab1" href="/tabs/tab1">
+                      <IonTabButton tab="tab1" href="/tabs/home">
                           <IonIcon icon={homeOutline} />
                           <IonLabel>Home</IonLabel>
                       </IonTabButton>
