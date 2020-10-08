@@ -1,21 +1,22 @@
 import React from 'react';
-import 
-{ 
-  IonContent, 
-  IonHeader, 
-  IonPage, 
-  IonTitle, 
-  IonToolbar, 
-  IonButton,
-  IonList,
-  IonItem,
-  IonThumbnail,
-  IonImg,
-  IonLabel 
+import {
+IonContent,
+IonHeader,
+IonPage,
+IonTitle,
+IonToolbar,
+IonButton,
+IonList,
+IonItem,
+IonThumbnail,
+IonImg,
+IonLabel,
+IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonGrid, IonRow, IonCol
 } from '@ionic/react';
 
-import ExploreContainer from '../components/ExploreContainer';
-
+//import images
+import trophy from '../images/trophy.png';
+import defaultPic from '../images/defaultPic.png'
 import './Tab3.css';
 
 type Item = {
@@ -23,57 +24,99 @@ type Item = {
   text: string;
 };
 
-const items: Item[] = [{ 
-  src: './images/ranking.png', 
-  text: '' 
+const items: Item[] = [{
+  src: './images/ranking.png',
+  text: ''
 }];
 
 const Tab3: React.FC = () => {
-  var img = document.createElement('img');
-
-  async function getACatPic() {
-    var request = new XMLHttpRequest()
-    request.open('GET', 'https://api.thecatapi.com/v1/images/search')
-    request.onload = function() {
-      var data = JSON.parse(this.response);
-      if (request.status >= 200 && request.status < 400) {
-        console.log('good')
-        img.src = data[0].url
-        var elm = document.getElementById("testText")!;
-        elm.appendChild(img)
-        var fireReq = new XMLHttpRequest()
-        fireReq.open('POST', 'https://practice-project-403ba.firebaseio.com/message_list.json')
-        var pushData = "'{ 'url' + '" +  img.src + "' }";
-        fireReq.send(JSON.stringify(pushData));
-        console.log("Should be refreshed")
-      } else {
-        console.log('error')
-      }
-    }
-    request.send();
-  }
 
   return (
     <IonPage>
-      <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">University Ranking</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-      {/* <IonContent fullscreen>
-        <IonButton onClick={getACatPic} id="buttonEx">Press for a cat pic:)</IonButton>
-        <p id="testText"> </p>
-      </IonContent> */}
-
+      <IonHeader >
+        <IonToolbar>
+          <IonTitle size="large" class="title">COMMUNITY</IonTitle>
+        </IonToolbar>
+      </IonHeader>
       <IonContent fullscreen>
-        <IonList>
-          {items.map((image, i) => (
-            <IonItem key={i}>
-              <IonImg src="./images/ranking.png" />
-              {/* <IonLabel>{image.text}</IonLabel> */}
-            </IonItem>
-          ))}
-        </IonList>
+        <IonCard>
+          <IonCardHeader>
+            <IonImg class="HeaderImg" src={trophy}/>
+            <IonCardTitle class="HeaderTitle">UNIVERSITY</IonCardTitle>
+            <IonCardSubtitle class="SmallText">10,000 COMMUNITY MEMBERS</IonCardSubtitle>
+            <IonCardSubtitle class="SmallText">30k Pounds of Waste Composted</IonCardSubtitle>
+          </IonCardHeader>
+        </IonCard>
+
+        <IonCard>
+          <IonCardContent>
+            <IonGrid>
+              <IonRow>
+                <IonCol class="rankingNum">1</IonCol>
+                <IonCol class="rankingPic"><IonImg  class="profilePic" src={defaultPic}/></IonCol>
+                <IonCol class="rankingData">
+                  <p>USERNAME</p>
+                  <p>20,000 PTS.</p>
+                </IonCol>
+                <IonCol>
+                </IonCol>
+              </IonRow>
+            </IonGrid>
+          </IonCardContent>
+        </IonCard>
+
+        <IonCard>
+          <IonCardContent>
+            <IonGrid>
+              <IonRow>
+                <IonCol class="rankingNum">2</IonCol>
+                <IonCol class="rankingPic"><IonImg  class="profilePic" src={defaultPic}/></IonCol>
+                <IonCol class="rankingData">
+                  <p>USERNAME</p>
+                  <p>19,679 PTS.</p>
+                </IonCol>
+                <IonCol>
+                </IonCol>
+              </IonRow>
+            </IonGrid>
+          </IonCardContent>
+        </IonCard>
+
+
+        <IonCard>
+          <IonCardContent>
+            <IonGrid>
+              <IonRow>
+                <IonCol class="rankingNum">3</IonCol>
+                <IonCol class="rankingPic"><IonImg  class="profilePic" src={defaultPic}/></IonCol>
+                <IonCol class="rankingData">
+                  <p>USERNAME</p>
+                  <p>19,590 PTS.</p>
+                </IonCol>
+                <IonCol>
+                </IonCol>
+              </IonRow>
+            </IonGrid>
+          </IonCardContent>
+        </IonCard>
+
+        <IonCard>
+          <IonCardContent>
+            <IonGrid>
+              <IonRow>
+                <IonCol class="rankingNum">4</IonCol>
+                <IonCol class="rankingPic"><IonImg  class="profilePic" src={defaultPic}/></IonCol>
+                <IonCol class="rankingData">
+                  <p>USERNAME</p>
+                  <p>19,432 PTS.</p>
+                </IonCol>
+                <IonCol>
+                </IonCol>
+              </IonRow>
+            </IonGrid>
+          </IonCardContent>
+        </IonCard>
+
       </IonContent>
     </IonPage>
   );

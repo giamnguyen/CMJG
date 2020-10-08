@@ -70,7 +70,7 @@ const App: React.FC = () =>  {
                   <IonTabs>
                     <IonRouterOutlet>
                       <Route
-                        path="/tabs/home"
+                        path="/tabs/tab1"
                         component={Tab1}
                         exact={true}
                       />
@@ -96,7 +96,7 @@ const App: React.FC = () =>  {
                       />
                     </IonRouterOutlet>
                     <IonTabBar slot="bottom">
-                      <IonTabButton tab="tab1" href="/tabs/home">
+                      <IonTabButton tab="tab1" href="/tabs/tab1">
                           <IonIcon icon={homeOutline} />
                           <IonLabel>Home</IonLabel>
                       </IonTabButton>
