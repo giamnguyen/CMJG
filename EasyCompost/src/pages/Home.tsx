@@ -1,55 +1,68 @@
-import React, { useState, useEffect } from 'react';
-import { IonContent, IonInput, IonPage, IonButton, IonHeader, IonToolbar, IonTitle, IonLoading } from '@ionic/react';
-import { Link } from 'react-router-dom';
-// import {loginUser} from '../firebaseConfig'
-import { toast } from '../toast';
+import React from 'react';
+import { Redirect, Route } from 'react-router-dom';
+import {
+  IonApp,
+  IonButton,
+  IonRouterOutlet,
+  IonContent,
+  IonTabs,
+  IonTabBar,
+  IonIcon,
+  IonTabButton,
+  IonLabel,
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonInput,
+  IonList, 
+  IonItemDivider, 
+  IonItem
+} from '@ionic/react';
+import { IonReactRouter } from '@ionic/react-router';
+import { scanOutline, ellipse, personOutline, homeOutline, trophyOutline } from 'ionicons/icons';
 
-var globalUsername = '';
+import Tab1 from './Tab1';
+import Tab2 from './Tab2';
+import Tab3 from './Tab3';
+import UserInfo from './UserInfo';
+import ConfirmDropOff from './ConfirmDropOff';
 
-const Login: React.FC = () => {
-  const [busy, setBusy] = useState<boolean>(false)
-  const [password, setPassword] = useState<string>('')
-  const [username, setUsername] = useState<string>('')
-
-  async function login() {
-    // setBusy(true)
-    // const res = await loginUser(username, password)
-    // if (!res) {
-    //   setBusy(false)
-    //   toast('Username or password is incorrect')
-    // } else {
-    //   toast('You have logged in!')
-    //   setGlobalUsername(username)
-    // }
-    // setBusy(false)
-
-    console.log('hahahah');
-  }
-
+const Home: React.FC = () =>  {
   return (
-    <IonPage>
-      <IonHeader>
-          <IonToolbar>
-              <IonTitle>Login</IonTitle>
-          </IonToolbar>
-      </IonHeader>
-      <IonLoading message="Please wait.." duration={0} isOpen={busy} />
-      <IonContent className="ion-padding">
-        <IonButton onClick={login}>Login</IonButton>
-        <p>
-            Don't have an account? <Link to="/register">Register</Link>
-        </p>
-      </IonContent>
-    </IonPage>
-  )
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+            <IonRouterOutlet>
+              <Route path="/tab1" component={Tab1} exact={true} />
+              <Route path="/tab2" component={Tab2} exact={true} />
+              <Route path="/tab3" component={Tab3} />
+              <Route path="/userInfo" component={UserInfo} />
+              <Route path="/confirmDrop" component={ConfirmDropOff} />
+              <Route path="/home" render={() => <Redirect to="/tab1" />} exact={true} />
+            </IonRouterOutlet>
+            <IonTabBar slot="bottom">
+            <IonTabButton tab="tab1" href="/tab1">
+                <IonIcon icon={homeOutline} />
+                <IonLabel>Home</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="tab2" href="/confirmDrop">
+                <IonIcon icon={scanOutline} />
+                <IonLabel>Scanning</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="tab3" href="/tab3">
+                <IonIcon icon={trophyOutline} />
+                <IonLabel>Rankings</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="tab4" href="/userInfo">
+                <IonIcon icon={personOutline} />
+                <IonLabel>User Info</IonLabel>
+            </IonTabButton>
+            </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  );
 };
 
-function setGlobalUsername(username : string) {
-    globalUsername = username;
-}
-
-export function getGlobalUsername() {
-    return globalUsername;
-}
-
-export default Login;
+export default Home;

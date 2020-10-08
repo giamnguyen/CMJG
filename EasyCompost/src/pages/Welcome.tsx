@@ -24,7 +24,7 @@ import {earthOutline} from 'ionicons/icons';
 import { IonReactRouter } from '@ionic/react-router';
 
 
-const UsersListPage: React.FC<RouteComponentProps> = ({history}) => {
+const Welcome: React.FC<RouteComponentProps> = ({history}) => {
 
 //   const signIn = () => {};
 
@@ -75,4 +75,4 @@ const UsersListPage: React.FC<RouteComponentProps> = ({history}) => {
   );
 };
 
-export default UsersListPage;
+export default Welcome;
