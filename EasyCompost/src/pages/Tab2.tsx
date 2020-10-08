@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { camera, trash, close } from 'ionicons/icons';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,
          IonFab, IonFabButton, IonIcon, IonGrid, IonRow,
-         IonCol, IonImg, IonActionSheet } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+         IonCol, IonImg, IonAlert } from '@ionic/react';
 import './Tab2.css';
 import { usePhotoGallery } from '../hooks/usePhotoGallery';
 import { getGlobalUsername } from './Login';
@@ -11,6 +10,8 @@ import { getGlobalUsername } from './Login';
 const Tab2: React.FC = () => {
   const { photos, takePhoto } = usePhotoGallery();
   const username = getGlobalUsername();
+  const [showAlert1, setShowAlert1] = useState(true);
+  const [showAlert2, setShowAlert2] = useState(false);
 
   return (
     <IonPage>
@@ -20,6 +21,23 @@ const Tab2: React.FC = () => {
           </IonToolbar>
         </IonHeader>
       <IonContent fullscreen>
+      <IonAlert
+          isOpen={showAlert1}
+          onDidDismiss={() => setShowAlert1(false)}
+          cssClass='my-custom-class'
+          header={'Wait!'}
+          subHeader={'Before you drop off, make sure\nall your products are compostable!'}
+          buttons={['I\'m not\nsure', 'Yep, all\ngood!']}
+        />
+        <IonAlert
+          isOpen={showAlert2}
+          onDidDismiss={() => setShowAlert2(false)}
+          cssClass='my-custom-class'
+          header={'Congrats!'}
+          subHeader={'You just completed a drop off! Thanks for\nhelping the Earth.\n'}
+          message={'+150 PTS'}
+          buttons={['Thanks!']}
+        />
         <IonGrid>
           <IonRow>
             {photos.map((photo, index) => (
@@ -30,7 +48,9 @@ const Tab2: React.FC = () => {
           </IonRow>
         </IonGrid>
         <IonFab vertical="bottom" horizontal="center" slot="fixed">
-          <IonFabButton onClick={() => takePhoto()}>
+          <IonFabButton onClick={() => {
+            takePhoto();
+            setShowAlert2(true)}}>
             <IonIcon icon={camera}></IonIcon>
           </IonFabButton>
         </IonFab>

@@ -80,8 +80,8 @@ export function usePhotoGallery() {
         const fileName = new Date().getTime() + '.jpeg';
         const savedFileImage = await savePicture(cameraPhoto, fileName);
         const newPhotos = [savedFileImage, ...photos];
-        setPhotos(newPhotos);
-        set(PHOTO_STORAGE,
+        //setPhotos(newPhotos);
+        /*set(PHOTO_STORAGE,
             isPlatform('hybrid')
               ? JSON.stringify(newPhotos)
               : JSON.stringify(newPhotos.map(p => {
@@ -90,7 +90,7 @@ export function usePhotoGallery() {
                 const photoCopy = { ...p };
                 delete photoCopy.base64;
                 return photoCopy;
-        })));
+        })));*/
     }
 
     return {

@@ -2,22 +2,15 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
-  IonButton,
   IonRouterOutlet,
-  IonContent,
   IonTabs,
   IonTabBar,
   IonIcon,
   IonTabButton,
   IonLabel,
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonInput
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { scanOutline, ellipse, personOutline, homeOutline, trophyOutline } from 'ionicons/icons';
+import { scanOutline, personOutline, homeOutline, trophyOutline } from 'ionicons/icons';
 
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
