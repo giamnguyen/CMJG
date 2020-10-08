@@ -1,0 +1,83 @@
+.title {
+    color: gray;
+    font-size: large;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.HeaderTitle {
+    color: black;
+    font-size: xx-large;
+    text-align: left;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.HeaderImg {
+    width: 10%;
+    margin: auto;
+}
+
+.SmallText {
+    text-align: left;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 100%;
+}
+
+.picContainer{
+    margin: auto;
+    max-width: 40%;
+}
+
+.infoContainer {
+    margin: auto;
+    max-width: 70%;
+}
+
+.profilePic {
+    width: 80%;
+    margin: auto;
+}
+
+.friendsButton {
+    color: white;
+    padding-top: 3%;
+    width: 50%;
+
+
+}
+
+.profileStats{
+    text-align: center;
+    line-height: 80%;
+    margin: auto;
+}
+
+h1 {
+    font-size: 150%;
+    line-height: 10%;
+    font-weight: bold;
+}
+
+.postCard {
+    color: darkgray;
+    background-color:whitesmoke;
+}
+
+.postTitle {
+    color: darkgray;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.postImg {
+    max-width: 12%;
+    margin: auto;
+}
+
+.postContent {
+    margin: auto;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: darkgray;
+    font-size: 20px;
+    padding: 10%;
+}
