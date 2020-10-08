@@ -12,10 +12,13 @@ import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 import { getGlobalUsername } from './Login';
 import { toast } from '../toast';
+
+//images
 import graphImg from '../images/graph.png';
 import mapImg from '../images/mapImg.png';
 import infoImg from '../images/infoImg.png';
 
+//chart libary
 
 const Tab1: React.FC = () => {
 
@@ -82,15 +85,6 @@ const Tab1: React.FC = () => {
             </IonGrid>
           </IonCardContent>
         </IonCard>
-
-
-        <IonList>
-          <IonItem>
-            <IonButton onClick={getToast}>
-              Get a toast!
-            </IonButton>
-          </IonItem>
-        </IonList>
       </IonContent>
     </IonPage>
   );

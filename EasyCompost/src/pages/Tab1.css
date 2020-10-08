@@ -38,9 +38,9 @@
 }
 
 .CardImg {
-    width: 120px;
     margin: auto;
     margin-bottom: 10%;
+    width: 50%;
 }
 
 .bluecards {
