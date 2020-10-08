@@ -1,0 +1,51 @@
+.title {
+    color: gray;
+    font-size: large;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.HeaderTitle {
+    color: black;
+    font-size: xx-large;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.HeaderImg {
+    width: 10%;
+    margin: auto;
+}
+
+.SmallText {
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 50%;
+}
+
+.rankingNum {
+    font-size: xx-large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-right: 0px;
+    padding-right: 0px;
+    max-width: 10%;
+    margin: auto;
+}
+
+.rankingPic {
+    max-width: 20%;
+}
+
+.profilePic {
+    width: 100%;
+    margin: 0px
+}
+
+.rankingData {
+    text-align: left;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 50%;
+    margin-left: 0px;
+    padding-left: 5%;
+    margin: auto;
+}
