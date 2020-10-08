@@ -82,7 +82,7 @@ const ConfirmDropOff: React.FC = () => {
       </IonContent>
 
       <IonFooter>
-        <IonButton color="dark" expand="block" onClick={confirmDropOff}> Complete Drop Off </IonButton>
+        <IonButton color="dark" expand="block" onClick={confirmDropOff}> <Link to="/tabs/tab2">Complete Drop Off</Link></IonButton>
       </IonFooter>
     </IonPage>
   );
