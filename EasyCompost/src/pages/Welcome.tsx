@@ -53,7 +53,7 @@ const Welcome: React.FC<RouteComponentProps> = ({history}) => {
                 {/* <IonButton onClick={signIn} routerLink="/Login"> */}
                 <IonButton onClick={e => {
                   e.preventDefault();
-                  history.push('/login')
+                  history.push('/notabs/login')
                   }}>
                   Sign In
                 </IonButton>
@@ -62,7 +62,7 @@ const Welcome: React.FC<RouteComponentProps> = ({history}) => {
                 {/* <IonButton onClick={register} routerLink="/Register"> */}
                 <IonButton onClick={e => {
                   e.preventDefault();
-                  history.push('/register')
+                  history.push('/notabs/register')
                   }}>
                   Register
                 </IonButton>

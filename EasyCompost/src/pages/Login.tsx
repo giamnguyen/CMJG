@@ -24,13 +24,13 @@ const Login: React.FC<RouteComponentProps> = ({history}) => {
         <IonInput type="password" placeholder="Password" onIonChange={(e: any) => setPassword(e.target.value)}/>
         <IonButton onClick={e => {
             e.preventDefault();
-            history.push('/home')
+            history.push('/tabs/home')
             }}>
             Log In
           {/* <Link to="/tab1" style={{ color: 'white' }}> Login</Link> */}
         </IonButton>
         <p>
-            Don't have an account? <Link to="/register">Register</Link>
+            Don't have an account? <Link to="/notabs/register">Register</Link>
         </p>
       </IonContent>
     </IonPage>

@@ -36,7 +36,7 @@ const ConfirmDropOff: React.FC = () => {
           <IonItemDivider>Name</IonItemDivider>
           <IonItem>
           <IonButton>
-            <Link to="/tab2" style={{ color: 'white' }}> Ready to Scan! </Link>
+            <Link to="/tabs/tab2" style={{ color: 'white' }}> Ready to Scan! </Link>
           </IonButton>
           </IonItem>
           <IonItem>
