@@ -37,10 +37,10 @@ const Login: React.FC = () => {
         <IonInput placeholder="Username" onIonChange={(e: any) => setUsername(e.target.value)} />
         <IonInput type="password" placeholder="Password" onIonChange={(e: any) => setPassword(e.target.value)}/>
         <IonButton onClick={login}>
-          <Link to="/tab1" style={{ color: 'white' }}> Login</Link>
+          <Link to="/tabs/tab1" style={{ color: 'white' }}> Login</Link>
         </IonButton>
         <p>
-            Don't have an account? <Link to="/register">Register</Link>
+            Don't have an account? <Link to="/notabs/register">Register</Link>
         </p>
       </IonContent>
     </IonPage>

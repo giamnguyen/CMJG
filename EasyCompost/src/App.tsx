@@ -50,37 +50,80 @@ const App: React.FC = () =>  {
   return (
     <IonApp>
       <IonReactRouter>
-          <IonTabs>
               <IonRouterOutlet>
-                <Route path="/tab1" component={Tab1} exact={true} />
-                <Route path="/tab2" component={Tab2} exact={true} />
-                <Route path="/login" component={Login} />
-                <Route path="/tab3" component={Tab3} />
-                <Route path="/register" component={Register} />
-                <Route path="/userInfo" component={UserInfo} />
-                <Route path="/confirmDrop" component={ConfirmDropOff} />
-                <Route path="/" render={() => <Redirect to="/login" />} exact={true} />
+                <Route path="/notabs" render={() => (
+                    <IonRouterOutlet>
+                    <Route
+                      path="/notabs/login"
+                      component={Login}
+                      exact={true}
+                    />
+                    <Route
+                      path="/notabs/register"
+                      component={Register}
+                      exact={true}
+                    />
+                  </IonRouterOutlet>
+                )} />
+                <Route
+                  path="/tabs"
+                  render={() => (
+                      <IonTabs>
+                        <IonRouterOutlet>
+                          <Route
+                            path="/tabs/tab1"
+                            component={Tab1}
+                            exact={true}
+                          />
+                          <Route
+                            path="/tabs/confirmDrop"
+                            component={ConfirmDropOff}
+                            exact={true}
+                          />
+                          <Route
+                            path="/tabs/tab2"
+                            component={Tab2}
+                            exact={true}
+                          />
+                          <Route
+                            path="/tabs/tab3"
+                            component={Tab3}
+                            exact={true}
+                          />
+                          <Route
+                            path="/tabs/userInfo"
+                            component={UserInfo}
+                            exact={true}
+                          />
+                        </IonRouterOutlet>
+                        <IonTabBar slot="bottom">
+                          <IonTabButton tab="tab1" href="/tabs/tab1">
+                              <IonIcon icon={homeOutline} />
+                              <IonLabel>Home</IonLabel>
+                          </IonTabButton>
+                          <IonTabButton tab="tab2" href="/tabs/confirmDrop">
+                              <IonIcon icon={scanOutline} />
+                              <IonLabel>Scanning</IonLabel>
+                          </IonTabButton>
+                          <IonTabButton tab="tab3" href="/tabs/tab3">
+                              <IonIcon icon={trophyOutline} />
+                              <IonLabel>Rankings</IonLabel>
+                          </IonTabButton>
+                          <IonTabButton tab="tab4" href="/tabs/userInfo">
+                              <IonIcon icon={personOutline} />
+                              <IonLabel>User Info</IonLabel>
+                          </IonTabButton>
+                        </IonTabBar>
+                      </IonTabs>
+                  )}
+                />
+                <Route
+                  path="/"
+                  render={() => <Redirect to="/notabs/login" />}
+                  exact={true}
+                />
               </IonRouterOutlet>
-              <IonTabBar slot="bottom">
-              <IonTabButton tab="tab1" href="/tab1">
-                  <IonIcon icon={homeOutline} />
-                  <IonLabel>Home</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="tab2" href="/confirmDrop">
-                  <IonIcon icon={scanOutline} />
-                  <IonLabel>Scanning</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="tab3" href="/tab3">
-                  <IonIcon icon={trophyOutline} />
-                  <IonLabel>Rankings</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="tab4" href="/userInfo">
-                  <IonIcon icon={personOutline} />
-                  <IonLabel>User Info</IonLabel>
-              </IonTabButton>
-              </IonTabBar>
-          </IonTabs>
-          </IonReactRouter>
+        </IonReactRouter>
     </IonApp>
   );
 };
