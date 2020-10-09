@@ -1,90 +1,104 @@
 
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, withIonLifeCycle, IonButton, IonFooter, IonList, IonItem, IonLabel, IonListHeader, IonText } from '@ionic/react';
+import { IonContent, IonHeader, IonCard, IonPage, IonTitle, IonToolbar, IonImg, IonButton, IonFooter, IonList, IonItem, IonLabel, IonListHeader, IonText, IonCardHeader, IonCardTitle, IonCardSubtitle, IonGrid, IonRow, IonCol, IonCardContent } from '@ionic/react';
 import React from 'react';
-import { Plugins, PushNotification, PushNotificationToken, PushNotificationActionPerformed } from '@capacitor/core';
+import { Plugins } from '@capacitor/core';
+import './UserInfo.css';
+
+//import images
+import profilePic from '../images/defaultPic.png';
+import ribbon from '../images/ribbon.png';
+import calendar from '../images/calendar.png';
+import reward from '../images/reward.png';
+
 
 const { PushNotifications } = Plugins;
 const INITIAL_STATE = {
   notifications: [{ id: 'id', title: "Test Push", body: "This is my first push notification" }],
 };
 
-export class UserInfo extends React.Component {
-  state: any = {};
-  props: any = {};
-  constructor(props: any) {
-    super(props);
-    this.state = { ...INITIAL_STATE };
-  }
+const UserInfo: React.FC = () => {
 
-  push() {
-    // Register with Apple / Google to receive push via APNS/FCM
-    PushNotifications.register();
+  return (
+    <IonPage>
+      <IonHeader >
+        <IonToolbar>
+          <IonTitle size="large" class="title">USERNAME</IonTitle>
+        </IonToolbar>
 
-    // On succcess, we should be able to receive notifications
-    PushNotifications.addListener('registration',
-      (token: PushNotificationToken) => {
-        alert('Push registration success, token: ' + token.value);
-      }
-    );
 
-    // Some issue with your setup and push will not work
-    PushNotifications.addListener('registrationError',
-      (error: any) => {
-        alert('Error on registration: ' + JSON.stringify(error));
-      }
-    );
+        <IonCard>
+          <IonCardHeader>
+            <IonGrid>
+              <IonRow>
+                <IonCol class="infoContainer">
+                  <IonCardSubtitle class="SmallText">UNIVERSITY NAME</IonCardSubtitle>
+                  <IonCardTitle class="HeaderTitle">DISPLAY NAME</IonCardTitle>
+                  <IonCardSubtitle class="SmallText">USERNAME</IonCardSubtitle>
+                  <IonButton color="dark" class="friendsButton">FRIENDS</IonButton>
+                </IonCol>
+                <IonCol class="picContainer">
+                  <IonImg class="profilePic" src={profilePic} />
+                </IonCol>
+              </IonRow>
+            </IonGrid>
+          </IonCardHeader>
+          <IonCard class="profileStats">
+            <IonGrid>
+              <IonRow>
+                <IonCol>
+                  <h1>300</h1>
+                  <p>Days Composting</p>
+                </IonCol>
+                <IonCol>
+                  <h1>1042</h1>
+                  <p>Points</p>
+                </IonCol>
+                <IonCol>
+                  <h1>40</h1>
+                  <p>lbs. Composted</p>
+                </IonCol>
+              </IonRow>
+            </IonGrid>
 
-    // Show us the notification payload if the app is open on our device
-    PushNotifications.addListener('pushNotificationReceived',
-      (notification: PushNotification) => {
-        let notif = this.state.notifications;
-        notif.push({ id: notification.id, title: notification.title, body: notification.body })
-        this.setState({
-          notifications: notif
-        })
-      }
-    );
+          </IonCard>
 
-    // Method called when tapping on a notification
-    PushNotifications.addListener('pushNotificationActionPerformed',
-      (notification: PushNotificationActionPerformed) => {
-        let notif = this.state.notifications;
-        notif.push({ id: notification.notification.data.id, title: notification.notification.data.title, body: notification.notification.data.body })
-        this.setState({
-          notifications: notif
-        })
-      }
-    );
-  }
 
-  render() {
-    const { notifications } = this.state;
-    return (
-      <IonPage>
-        <IonListHeader color="medium">
-          <IonLabel>User Information</IonLabel>
-        </IonListHeader>
-        <IonContent className="ion-padding">
-          <IonList>
-            {notifications && notifications.map((notif: any) =>
-              <IonItem key={notif.id}>
-                <IonLabel>
-                  <IonText>
-                    <h3>{notif.title}</h3>
-                  </IonText>
-                  <p>{notif.body}</p>
-                </IonLabel>
-              </IonItem>
-            )}
-          </IonList>
-        </IonContent>
-        <IonFooter>
-          <IonToolbar>
-          <IonButton expand="full" onClick={() => this.push()}>Register for Push</IonButton>
-          </IonToolbar>
-        </IonFooter>
-      </IonPage >
-    );
-  };
-}
+        </IonCard>
+
+      </IonHeader>
+      <IonContent fullscreen>
+        <IonCard class="postCard">
+          <IonCardHeader>
+            <IonCardTitle class="postTitle">AWARD</IonCardTitle>
+            <IonImg class="postImg" src={ribbon} />
+          </IonCardHeader>
+          <IonCardContent class="postContent">
+            Username has Composted 40 pounds! That't the equivalent of removing 37 pounds of C02 from the environment!
+          </IonCardContent>
+        </IonCard>
+
+        <IonCard class="postCard">
+          <IonCardHeader>
+            <IonCardTitle class="postTitle">STREAK</IonCardTitle>
+            <IonImg class="postImg" src={calendar} />
+          </IonCardHeader>
+          <IonCardContent class="postContent">
+            Username has been composting for 300 dats straight! That's impressive! In that time they've composted 39 lbs.
+          </IonCardContent>
+        </IonCard>
+
+        <IonCard class="postCard">
+          <IonCardHeader>
+            <IonCardTitle class="postTitle">REWARD</IonCardTitle>
+            <IonImg class="postImg" src={reward} />
+          </IonCardHeader>
+          <IonCardContent class="postContent">
+            Username redeemed 850 points! They got a $10 giftcard to Starbucks!
+          </IonCardContent>
+        </IonCard>
+      </IonContent>
+    </IonPage>
+  );
+};
+
 export default UserInfo;
