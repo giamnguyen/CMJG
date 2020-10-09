@@ -75,11 +75,6 @@ const App: React.FC = () =>  {
                         exact={true}
                       />
                       <Route
-                        path="/tabs/confirmDrop"
-                        component={ConfirmDropOff}
-                        exact={true}
-                      />
-                      <Route
                         path="/tabs/tab2"
                         component={Tab2}
                         exact={true}
@@ -87,6 +82,11 @@ const App: React.FC = () =>  {
                       <Route
                         path="/tabs/tab3"
                         component={Tab3}
+                        exact={true}
+                      />
+                      <Route
+                        path="/tabs/confirmDrop"
+                        component={ConfirmDropOff}
                         exact={true}
                       />
                       <Route
@@ -100,7 +100,7 @@ const App: React.FC = () =>  {
                           <IonIcon icon={homeOutline} />
                           <IonLabel>Home</IonLabel>
                       </IonTabButton>
-                      <IonTabButton tab="tab2" href="/tabs/confirmDrop">
+                      <IonTabButton tab="tab2" href="/tabs/tab2">
                           <IonIcon icon={scanOutline} />
                           <IonLabel>Scanning</IonLabel>
                       </IonTabButton>

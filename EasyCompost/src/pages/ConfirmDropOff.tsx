@@ -9,13 +9,14 @@ import
   IonToolbar, 
   IonInput, 
   IonList, IonItemDivider, IonItem, IonLabel, IonButton,
-  IonIcon, IonCheckbox
+  IonIcon, IonCheckbox, IonAlert
 } from '@ionic/react';
 import { locationOutline, people } from 'ionicons/icons'
 import './Tab1.css';
 import { getGlobalUsername } from './Login';
 import { toast } from '../toast';
 import { Link } from 'react-router-dom';
+import Dialog2 from './Dialog2';
 
 
 const ConfirmDropOff: React.FC = () => {
@@ -27,6 +28,7 @@ const ConfirmDropOff: React.FC = () => {
   //   toast('Here\'s your toast!');
   // }
 
+  const [showAlert2, setShowAlert2] = useState(false);
   const [checked, setChecked] = useState(false);
 
   const weightInputRef = useRef<HTMLIonInputElement>(null);
@@ -37,6 +39,7 @@ const ConfirmDropOff: React.FC = () => {
     const enterCompostTag = compostTagInputRef.current?.value;
 
     console.log(enterWeight, enterCompostTag, checked);
+    setShowAlert2(true);
   }
 
   return (
@@ -82,8 +85,18 @@ const ConfirmDropOff: React.FC = () => {
       </IonContent>
 
       <IonFooter>
-        <IonButton color="dark" expand="block" onClick={confirmDropOff}> <Link to="/tabs/tab2">Complete Drop Off</Link></IonButton>
+        <IonButton color="dark" expand="block" onClick={confirmDropOff}> Complete Drop Off </IonButton>
       </IonFooter>
+      
+      <Dialog2  
+        header={'Congrats!'}
+        subHeader={'You just completed a drop off! Thanks for helping the Earth.'}
+        message={'+150 PTS'}
+        buttonText={'Thanks!'}
+        show={showAlert2}
+        setShow={() => setShowAlert2(false)}
+      />
+
     </IonPage>
   );
 };
