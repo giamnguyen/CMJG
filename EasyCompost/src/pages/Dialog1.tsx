@@ -16,6 +16,8 @@ import './Tab1.css';
 import { getGlobalUsername } from './Login';
 import { toast } from '../toast';
 import { Link } from 'react-router-dom';
+import { usePhotoGallery } from '../hooks/usePhotoGallery';
+import { useHistory } from 'react-router-dom';
 
 
 interface ModalProps {
@@ -28,13 +30,14 @@ interface ModalProps {
   setShow: Function
 }
 
-const Dialog1: React.FC<ModalProps> = (props) => {
+const Dialog1: React.FC<ModalProps> = (props, {history}) => {
   var { header, subHeader, message, buttonText1, buttonText2, show, setShow } = props;
+  const { photos, takePhoto } = usePhotoGallery();
   
   return (
   <IonPopover 
     cssClass='my-custom-class'
-    isOpen={show}  
+    isOpen={show}
     onDidDismiss={() => setShow(false)}
     >
       <IonContent class="ion-text-center modal-content">
@@ -49,9 +52,13 @@ const Dialog1: React.FC<ModalProps> = (props) => {
           </IonCard>
           <IonFooter>
             <IonButton color="secondary" href="/tabs/tab1"> {buttonText1} </IonButton>
-            <IonButton color="primary" href="/tabs/confirmDrop"> {buttonText2} </IonButton>
+            <IonButton color="primary" onClick={() => {
+              takePhoto();
+              setShow(false);
+              }}> 
+              {buttonText2} 
+            </IonButton>
           </IonFooter>
-
       </IonContent>
   </IonPopover>
 );
