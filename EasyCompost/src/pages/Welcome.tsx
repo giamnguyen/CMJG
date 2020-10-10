@@ -1,8 +1,6 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 import { 
-  IonApp, 
   IonHeader,
   IonContent,
   IonToolbar,
@@ -13,10 +11,6 @@ import {
   IonButton,
   IonIcon,
   IonPage,
-  IonItem,
-  IonLabel,
-  IonInput,
-  IonRouterOutlet, 
 } from '@ionic/react';
 
 import {earthOutline} from 'ionicons/icons';

@@ -5,10 +5,8 @@ IonHeader,
 IonPage,
 IonTitle,
 IonToolbar,
-IonInput,
-IonList, IonItemDivider, IonItem, IonLabel, IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonImg, IonGrid, IonRow, IonCol
+IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonImg, IonGrid, IonRow, IonCol
 } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 import { getGlobalUsername } from './Login';
 import { toast } from '../toast';

@@ -5,12 +5,7 @@ IonHeader,
 IonPage,
 IonTitle,
 IonToolbar,
-IonButton,
-IonList,
-IonItem,
-IonThumbnail,
 IonImg,
-IonLabel,
 IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonGrid, IonRow, IonCol
 } from '@ionic/react';
 

@@ -9,13 +9,9 @@ import
   IonCardHeader, 
   IonCardContent, 
   IonFooter, 
-  IonButton, IonIcon, IonicSafeString
+  IonButton, IonicSafeString
 } from '@ionic/react';
-import { locationOutline, people } from 'ionicons/icons'
 import './Tab1.css';
-import { getGlobalUsername } from './Login';
-import { toast } from '../toast';
-import { Link } from 'react-router-dom';
 
 
 interface ModalProps {
@@ -47,7 +43,7 @@ const Dialog2: React.FC<ModalProps> = (props) => {
               </IonCardContent>
           </IonCard>
           <IonFooter>
-              <IonButton color="primary" href="/tabs/tab2"> {buttonText} </IonButton>
+              <IonButton color="primary" href="/tabs/tab1"> {buttonText} </IonButton>
           </IonFooter>
 
       </IonContent>

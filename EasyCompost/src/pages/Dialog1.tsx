@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import 
 { 
   IonContent, 
@@ -9,15 +9,10 @@ import
   IonCardHeader, 
   IonCardContent, 
   IonFooter, 
-  IonButton, IonIcon, IonicSafeString
+  IonButton, IonicSafeString
 } from '@ionic/react';
-import { locationOutline, people } from 'ionicons/icons'
 import './Tab1.css';
-import { getGlobalUsername } from './Login';
-import { toast } from '../toast';
-import { Link } from 'react-router-dom';
 import { usePhotoGallery } from '../hooks/usePhotoGallery';
-import { useHistory } from 'react-router-dom';
 
 
 interface ModalProps {
@@ -30,7 +25,7 @@ interface ModalProps {
   setShow: Function
 }
 
-const Dialog1: React.FC<ModalProps> = (props, {history}) => {
+const Dialog1: React.FC<ModalProps> = (props) => {
   var { header, subHeader, message, buttonText1, buttonText2, show, setShow } = props;
   const { photos, takePhoto } = usePhotoGallery();
   

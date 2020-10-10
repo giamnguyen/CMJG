@@ -11,13 +11,10 @@ import
   IonList, IonItemDivider, IonItem, IonLabel, IonButton,
   IonIcon, IonCheckbox, IonFab, IonFabButton
 } from '@ionic/react';
-import { locationOutline, people, camera } from 'ionicons/icons'
+import { locationOutline, camera } from 'ionicons/icons'
 import './Tab1.css';
 import { getGlobalUsername } from './Login';
-import './Tab2.css';
 import { usePhotoGallery } from '../hooks/usePhotoGallery';
-import { toast } from '../toast';
-import { Link } from 'react-router-dom';
 import Dialog2 from './Dialog2';
 import Dialog1 from './Dialog1'
 

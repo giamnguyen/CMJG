@@ -1,5 +1,5 @@
 
-import { IonContent, IonHeader, IonCard, IonPage, IonTitle, IonToolbar, IonImg, IonButton, IonFooter, IonList, IonItem, IonLabel, IonListHeader, IonText, IonCardHeader, IonCardTitle, IonCardSubtitle, IonGrid, IonRow, IonCol, IonCardContent } from '@ionic/react';
+import { IonContent, IonHeader, IonCard, IonPage, IonTitle, IonToolbar, IonImg, IonButton, IonCardHeader, IonCardTitle, IonCardSubtitle, IonGrid, IonRow, IonCol, IonCardContent } from '@ionic/react';
 import React from 'react';
 import { Plugins } from '@capacitor/core';
 import './UserInfo.css';
