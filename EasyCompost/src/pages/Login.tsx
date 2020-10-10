@@ -3,6 +3,7 @@ import { IonContent, IonInput, IonPage, IonButton, IonHeader, IonToolbar, IonTit
 import { Link, RouteComponentProps } from 'react-router-dom';
 // import {loginUser} from '../firebaseConfig'
 import { toast } from '../toast';
+import './Login.css';
 
 var globalUsername = '';
 
@@ -15,14 +16,14 @@ const Login: React.FC<RouteComponentProps> = ({history}) => {
     <IonPage>
       <IonHeader>
           <IonToolbar>
-              <IonTitle>Login</IonTitle>
+              <IonTitle>LOGIN</IonTitle>
           </IonToolbar>
       </IonHeader>
       <IonLoading message="Please wait.." duration={0} isOpen={busy} />
       <IonContent className="ion-padding">
         <IonInput placeholder="Username" onIonChange={(e: any) => setUsername(e.target.value)} />
         <IonInput type="password" placeholder="Password" onIonChange={(e: any) => setPassword(e.target.value)}/>
-        <IonButton onClick={e => {
+        <IonButton color="dark"onClick={e => {
             e.preventDefault();
             history.push('/tabs/tab1')
             }}>

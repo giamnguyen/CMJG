@@ -10,11 +10,16 @@ IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonImg, I
 import './Tab1.css';
 import { getGlobalUsername } from './Login';
 import { toast } from '../toast';
+import { Link, RouteComponentProps } from 'react-router-dom';
+
 
 //images
 import graphImg from '../images/graph.png';
 import mapImg from '../images/mapImg.png';
 import infoImg from '../images/infoImg.png';
+import { navigate } from 'ionicons/icons';
+import Info from '../pages/Info'
+
 
 //chart libary
 
@@ -67,6 +72,7 @@ const Tab1: React.FC = () => {
         </IonCard>
 
         <IonCard>
+        <Link to="/notabs/Info">
           <IonCardHeader>
           </IonCardHeader>
           <IonCardContent>
@@ -82,6 +88,7 @@ const Tab1: React.FC = () => {
               </IonRow>
             </IonGrid>
           </IonCardContent>
+          </Link>
         </IonCard>
       </IonContent>
     </IonPage>

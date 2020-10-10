@@ -17,6 +17,8 @@ import {earthOutline} from 'ionicons/icons';
 
 import { IonReactRouter } from '@ionic/react-router';
 
+import './Welcome.css';
+
 
 const Welcome: React.FC<RouteComponentProps> = ({history}) => {
 
@@ -32,20 +34,12 @@ const Welcome: React.FC<RouteComponentProps> = ({history}) => {
             <Route path="/register" component={Register} />
             <Route path="/" render={() => <Redirect to="/login" />} exact={true} />
         </IonRouterOutlet> */}
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>
-              <IonIcon slot="start" icon={earthOutline} />
-              Welcome to Easy Compost
-            </IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent>
-          <IonGrid>
-            <IonRow>
+        <IonContent class="welcomePage">
+          <IonGrid >
+            <IonRow class="buttons">
               <IonCol>
                 {/* <IonButton onClick={signIn} routerLink="/Login"> */}
-                <IonButton onClick={e => {
+                <IonButton color="dark" onClick={e => {
                   e.preventDefault();
                   history.push('/notabs/login')
                   }}>
@@ -54,7 +48,7 @@ const Welcome: React.FC<RouteComponentProps> = ({history}) => {
               </IonCol>
               <IonCol>
                 {/* <IonButton onClick={register} routerLink="/Register"> */}
-                <IonButton onClick={e => {
+                <IonButton color="dark" onClick={e => {
                   e.preventDefault();
                   history.push('/notabs/register')
                   }}>

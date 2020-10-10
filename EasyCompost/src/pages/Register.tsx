@@ -44,7 +44,7 @@ const Register: React.FC = () => {
     <IonPage>
       <IonHeader>
           <IonToolbar>
-              <IonTitle>Register</IonTitle>
+              <IonTitle>REGISTER</IonTitle>
           </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
@@ -52,7 +52,7 @@ const Register: React.FC = () => {
         <IonInput placeholder="Username" onIonChange={(e: any) => setUsername(e.target.value)} />
         <IonInput type="password" placeholder="Password" onIonChange={(e: any) => setPassword(e.target.value)}/>
         <IonInput type="password" placeholder="Confirm password" onIonChange={(e: any) => setConfirmPassword(e.target.value)}/>
-        <IonButton onClick={register}>Register</IonButton>
+        <IonButton color="dark" onClick={register}>Register</IonButton>
         <p>
             Already have an account? <Link to="/notabs/login">Login</Link>
         </p>
