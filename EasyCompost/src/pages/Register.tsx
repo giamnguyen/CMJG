@@ -10,7 +10,7 @@ import '@ionic/react/css/normalize.css';
 import '@ionic/react/css/structure.css';
 import '@ionic/react/css/typography.css';
 import { toast } from '../toast';
-// import {registerUser} from '../firebaseConfig'
+import { registerUser } from '../firebaseConfig';
 
 const Register: React.FC = () => {
   const [busy, setBusy] = useState<boolean>(false)
@@ -19,25 +19,24 @@ const Register: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>('')
 
   async function register() {
-      // setBusy(true)
-      // if (password.length < 8) {
-      //   setBusy(false)
-      //   return toast('Your password must have at least 8 characters')
-      // }
-      // if (password !== confirmPassword) {
-      //   setBusy(false)
-      //   return toast('Passwords do not match')
-      // }
-      // if (username.trim() === '' || password.trim() ==='' ) {
-      //   setBusy(false)
-      //   return toast('Username and password are required')
-      // }
-      // const res = await registerUser(username, password)
-      // if (res) {
-      //   toast('User successfully registered!')
-      // }
-      // setBusy(false)
-      console.log('hahahah');
+      setBusy(true)
+      if (password.length < 6) {
+        setBusy(false)
+        return toast('Your password must have at least 8 characters')
+      }
+      if (password !== confirmPassword) {
+        setBusy(false)
+        return toast('Passwords do not match')
+      }
+      if (username.trim() === '' || password.trim() ==='' ) {
+        setBusy(false)
+        return toast('Username and password are required')
+      }
+      const res = await registerUser(username, password)
+      if (res) {
+        toast('User successfully registered!')
+      }
+      setBusy(false)
   }
 
   return (
@@ -49,9 +48,20 @@ const Register: React.FC = () => {
       </IonHeader>
       <IonContent className="ion-padding">
         <IonLoading message="Registration in progress..." duration={0} isOpen={busy} />
-        <IonInput placeholder="Username" onIonChange={(e: any) => setUsername(e.target.value)} />
-        <IonInput type="password" placeholder="Password" onIonChange={(e: any) => setPassword(e.target.value)}/>
-        <IonInput type="password" placeholder="Confirm password" onIonChange={(e: any) => setConfirmPassword(e.target.value)}/>
+        <IonInput 
+          placeholder="Username" 
+          onIonChange={(e: any) => setUsername(e.target.value)} 
+        />
+        <IonInput 
+          type="password" 
+          placeholder="Password" 
+          onIonChange={(e: any) => setPassword(e.target.value)}
+        />
+        <IonInput 
+          type="password" 
+          placeholder="Confirm password" 
+          onIonChange={(e: any) => setConfirmPassword(e.target.value)}
+        />
         <IonButton onClick={register}>Register</IonButton>
         <p>
             Already have an account? <Link to="/notabs/login">Login</Link>
