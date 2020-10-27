@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { IonContent, IonInput, IonPage, IonButton, IonHeader, IonToolbar, IonTitle, IonLoading } from '@ionic/react';
-import { Link } from 'react-router-dom'
+import { Link, RouteComponentProps } from 'react-router-dom'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -12,7 +12,7 @@ import '@ionic/react/css/typography.css';
 import { toast } from '../toast';
 import { registerUser } from '../firebaseConfig';
 
-const Register: React.FC = () => {
+const Register: React.FC<RouteComponentProps> = ({history}) => {
   const [busy, setBusy] = useState<boolean>(false)
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -35,6 +35,7 @@ const Register: React.FC = () => {
       const res = await registerUser(username, password)
       if (res) {
         toast('User successfully registered!')
+        history.push('/tabs/tab1');
       }
       setBusy(false)
   }

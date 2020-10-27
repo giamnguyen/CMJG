@@ -12,14 +12,17 @@ const Login: React.FC<RouteComponentProps> = ({history}) => {
   const [username, setUsername] = useState<string>('')
 
   async function login() {
+    setBusy(true);
     const res = await loginUser(username, password);
 
     if (!res) {
       toast('Error logging with your credentials');
     } else {
       toast('You have logged in!');
+      history.push('/tabs/tab1');
     }
     // console.log(`${res ? 'Login success' : 'Login failed'}`);
+    setBusy(false);
   }
 
   return (
@@ -37,15 +40,16 @@ const Login: React.FC<RouteComponentProps> = ({history}) => {
         />
         <IonInput 
           type="password" 
-          placeholder="Password" onIonChange={(e: any) => setPassword(e.target.value)}
+          placeholder="Password" 
+          onIonChange={(e: any) => setPassword(e.target.value)}
         />
-        <IonButton onClick={e => {
+        {/* <IonButton onClick={e => {
             e.preventDefault();
             history.push('/tabs/tab1')
             }}>
             Log In
           {/* <Link to="/tab1" style={{ color: 'white' }}> Login</Link> */}
-        </IonButton>
+        <IonButton onClick={login}>Login</IonButton>
         <p>
             Don't have an account? <Link to="/notabs/register">Register</Link>
         </p>
