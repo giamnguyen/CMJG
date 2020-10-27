@@ -26,3 +26,5 @@ yarn-error.log*
 # firebase
 ios/App/GoogleService-Info.plist
 src/firebaseConfig.ts
+node_modules
+package.json
