@@ -34,6 +34,10 @@ const ConfirmDropOff: React.FC = () => {
 
   const [showAlert2, setShowAlert2] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [greensChecked, setGreensChecked] = useState(false);
+  const [brownsChecked, setBrownsChecked] = useState(false);
+  const [heavyChecked, setHeavyChecked] = useState(false);
+  const [indChecked, setIndChecked] = useState(false);
 
   const weightInputRef = useRef<HTMLIonInputElement>(null);
   const compostTagInputRef = useRef<HTMLIonInputElement>(null);
@@ -89,20 +93,32 @@ const ConfirmDropOff: React.FC = () => {
             <IonItem>
               <IonIcon icon={locationOutline} />
               <IonLabel className="ion-text-center"> Student Center Cafeteria </IonLabel>
+            </IonItem>   
+
+            <IonItemDivider> Compost Content (Check all that apply) </IonItemDivider>
+            <IonItem>
+              <IonCheckbox slot="start" checked={greensChecked} onIonChange={e => setGreensChecked(e.detail.checked)} />
+              <IonLabel className="ion-text-wrap"> 
+                Greens: Includes fruit and vegetable trimmings, leaves
+              </IonLabel>
             </IonItem>
-
-            <IonItemDivider> Weight </IonItemDivider>
-            
             <IonItem>
-              <IonLabel position="floating">LBS</IonLabel>
-              <IonInput ref={weightInputRef}></IonInput>
-            </IonItem>          
-
-            <IonItemDivider> Compost Content Tags </IonItemDivider>
-            
+              <IonCheckbox slot="start" checked={brownsChecked} onIonChange={e => setBrownsChecked(e.detail.checked)} />
+              <IonLabel className="ion-text-wrap"> 
+                Browns: Includes paper, cardboard, sticks
+              </IonLabel>
+            </IonItem>
             <IonItem>
-              <IonLabel position="floating"> Ex: banana peel, paper cup </IonLabel>
-              <IonInput ref={compostTagInputRef}></IonInput>
+              <IonCheckbox slot="start" checked={heavyChecked} onIonChange={e => setHeavyChecked(e.detail.checked)} />
+              <IonLabel className="ion-text-wrap"> 
+                Heavy Compost: Oil/dairy/animal product scraps
+              </IonLabel>
+            </IonItem>
+            <IonItem>
+              <IonCheckbox slot="start" checked={indChecked} onIonChange={e => setIndChecked(e.detail.checked)} />
+              <IonLabel className="ion-text-wrap"> 
+                Industrial Compost: Containers and silverware labeled as compostable
+              </IonLabel>
             </IonItem>
 
             <IonItemDivider> </IonItemDivider>
