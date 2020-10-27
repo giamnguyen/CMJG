@@ -43,7 +43,6 @@ const Welcome: React.FC<RouteComponentProps> = ({history}) => {
         <IonContent>
           <IonGrid>
             <IonRow>
-              <IonCol>
                 {/* <IonButton onClick={signIn} routerLink="/Login"> */}
                 <IonButton onClick={e => {
                   e.preventDefault();
@@ -51,16 +50,15 @@ const Welcome: React.FC<RouteComponentProps> = ({history}) => {
                   }}>
                   Sign In
                 </IonButton>
-              </IonCol>
-              <IonCol>
-                {/* <IonButton onClick={register} routerLink="/Register"> */}
+            </IonRow>
+            <IonRow>
+            {/* <IonButton onClick={register} routerLink="/Register"> */}
                 <IonButton onClick={e => {
                   e.preventDefault();
                   history.push('/notabs/register')
                   }}>
                   Register
                 </IonButton>
-              </IonCol>
             </IonRow>
           </IonGrid>
         </IonContent>
