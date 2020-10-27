@@ -46,6 +46,11 @@
 
 }
 
+.logOutButton {
+    color: white;
+    padding-top: 5%;
+}
+
 .profileStats{
     text-align: center;
     line-height: 80%;

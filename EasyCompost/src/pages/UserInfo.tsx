@@ -22,9 +22,19 @@ const UserInfo: React.FC = () => {
     <IonPage>
       <IonHeader >
         <IonToolbar>
-          <IonTitle size="large" class="title">USERNAME</IonTitle>
+          <IonGrid>
+            <IonRow></IonRow>
+            <IonRow>
+            <IonCol>
+              <IonTitle size="large" class="title">USERNAME</IonTitle>
+            </IonCol>
+            <IonCol></IonCol>
+            <IonCol>
+              <IonButton color="dark" class="logoutButton">Logout</IonButton>
+            </IonCol>
+            </IonRow>
+          </IonGrid>
         </IonToolbar>
-
 
         <IonCard>
           <IonCardHeader>
