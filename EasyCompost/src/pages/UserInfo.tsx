@@ -42,6 +42,7 @@ const UserInfo: React.FC<RouteComponentProps> = ({history}) => {
     const res = await logout();
     toast('User successfully registered!');
     history.push('/notabs/welcome');
+    window.location.reload();
     setBusy(false);
   }
 
