@@ -10,7 +10,7 @@ import '@ionic/react/css/normalize.css';
 import '@ionic/react/css/structure.css';
 import '@ionic/react/css/typography.css';
 import { toast } from '../toast';
-import { registerUser } from '../firebaseConfig';
+import { registerUser } from '../functions';
 
 const Register: React.FC<RouteComponentProps> = ({history}) => {
   const [busy, setBusy] = useState<boolean>(false)

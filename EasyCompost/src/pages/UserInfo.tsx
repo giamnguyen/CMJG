@@ -1,6 +1,23 @@
+import { 
+  IonContent, 
+  IonHeader, 
+  IonCard, 
+  IonPage, 
+  IonTitle, 
+  IonToolbar, 
+  IonImg, 
+  IonButton, 
+  IonCardHeader, 
+  IonCardTitle, 
+  IonCardSubtitle, 
+  IonGrid, 
+  IonRow, 
+  IonCol, 
+  IonLoading,
+  IonCardContent 
+} from '@ionic/react';
 
-import { IonContent, IonHeader, IonCard, IonPage, IonTitle, IonToolbar, IonImg, IonButton, IonCardHeader, IonCardTitle, IonCardSubtitle, IonGrid, IonRow, IonCol, IonCardContent } from '@ionic/react';
-import React from 'react';
+import React, {useState} from 'react';
 import { Plugins } from '@capacitor/core';
 import './UserInfo.css';
 
@@ -10,13 +27,23 @@ import ribbon from '../images/ribbon.png';
 import calendar from '../images/calendar.png';
 import reward from '../images/reward.png';
 
+import { Link, RouteComponentProps } from 'react-router-dom'
+import { logout } from '../functions';
+import { toast } from '../toast';
 
 const { PushNotifications } = Plugins;
 const INITIAL_STATE = {
   notifications: [{ id: 'id', title: "Test Push", body: "This is my first push notification" }],
 };
 
-const UserInfo: React.FC = () => {
+const UserInfo: React.FC<RouteComponentProps> = ({history}) => {
+  const [busy, setBusy] = useState<boolean>(false);
+  async function signout() {
+    const res = await logout();
+    toast('User successfully registered!');
+    history.push('/notabs/welcome');
+    setBusy(false);
+  }
 
   return (
     <IonPage>
@@ -30,11 +57,18 @@ const UserInfo: React.FC = () => {
             </IonCol>
             <IonCol></IonCol>
             <IonCol>
-              <IonButton color="dark" class="logoutButton">Logout</IonButton>
+              <IonButton 
+                onClick={signout}
+                color="dark" 
+                class="logoutButton">
+                  Logout
+              </IonButton>
             </IonCol>
             </IonRow>
           </IonGrid>
         </IonToolbar>
+
+        <IonLoading message="Please wait.." duration={0} isOpen={busy} />
 
         <IonCard>
           <IonCardHeader>
