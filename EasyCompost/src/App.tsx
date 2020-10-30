@@ -19,6 +19,7 @@ import Register from './pages/Register';
 import UserInfo from './pages/UserInfo';
 import ConfirmDropOff from './pages/ConfirmDropOff';
 import Welcome from './pages/Welcome';
+import Map from './pages/Map';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -86,6 +87,11 @@ const App: React.FC = () =>  {
                       <Route
                         path="/tabs/userInfo"
                         component={UserInfo}
+                        exact={true}
+                      />
+                      <Route
+                        path="/tabs/map"
+                        component={Map}
                         exact={true}
                       />
                     </IonRouterOutlet>
