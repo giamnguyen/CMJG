@@ -16,7 +16,7 @@ import {earthOutline} from 'ionicons/icons';
 
 import GeolocationButton from '../components/GeolocationButton';
 
-import { GoogleMap, Marker, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, Marker, InfoWindow, LoadScript } from '@react-google-maps/api';
 
 //images
 import binMaker from '../images/bin-maker.svg';
@@ -37,8 +37,22 @@ const iconPin = {
   scale: 0.05, //to reduce the size of icons
 };
 
+interface IMarker {
+  lat: number;
+  lng: number;
+  lbl: String;
+}
+
+const divStyle = {
+  background: `black`,
+  border: `1px solid #ccc`,
+  padding: 2
+}
+
 const Map: React.FC = () => {
   // const [markers, setMarkers] = useState([]);
+  const [selected, setSelected] = useState<IMarker|null>(null);
+
   const mapRef = useRef();
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
@@ -87,8 +101,25 @@ const Map: React.FC = () => {
                     //   scaledSize: new window.google.maps.Size(30, 30),
                     // }}
                     label={marker.lbl}
+                    onClick={() => {
+                      setSelected(marker);
+                    }}
                   />
                 ))}
+
+                {selected ? (
+                  <InfoWindow
+                    position={{ lat: selected.lat, lng: selected.lng }}
+                    onCloseClick={() => {
+                      setSelected(null);
+                    }}
+                  >   
+                    <div style={divStyle}>
+                      <h1>{selected.lbl}</h1>
+                      <h2>{selected.lat}, {selected.lng}</h2>
+                    </div>
+                  </InfoWindow>
+                ) : null}
               </GoogleMap>
             </LoadScript>
             </IonRow>
