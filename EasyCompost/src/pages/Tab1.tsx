@@ -8,6 +8,7 @@ IonToolbar,
 IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonImg, IonGrid, IonRow, IonCol
 } from '@ionic/react';
 import './Tab1.css';
+import { Link, RouteComponentProps } from 'react-router-dom';
 import { getGlobalUsername } from './Login';
 import { toast } from '../toast';
 
@@ -51,6 +52,7 @@ const Tab1: React.FC = () => {
         <IonCard class="bluecards">
           <IonCardHeader>
           </IonCardHeader>
+          <Link to="/notabs/map">
           <IonCardContent>
             <IonGrid>
               <IonRow>
@@ -63,7 +65,7 @@ const Tab1: React.FC = () => {
                 </IonCol>
               </IonRow>
             </IonGrid>
-          </IonCardContent>
+          </IonCardContent></Link>
         </IonCard>
 
         <IonCard>

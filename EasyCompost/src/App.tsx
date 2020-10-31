@@ -62,6 +62,11 @@ const App: React.FC = () =>  {
                   component={Welcome}
                   exact={true}
                 />
+                <Route 
+                  path="/notabs/map"
+                  component={Map}
+                  exact={true}
+                />
               </IonRouterOutlet>
             )} />
             <Route
@@ -87,11 +92,6 @@ const App: React.FC = () =>  {
                       <Route
                         path="/tabs/userInfo"
                         component={UserInfo}
-                        exact={true}
-                      />
-                      <Route
-                        path="/tabs/map"
-                        component={Map}
                         exact={true}
                       />
                     </IonRouterOutlet>

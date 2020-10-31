@@ -44,7 +44,6 @@ interface IMarker {
 }
 
 const divStyle = {
-  background: `black`,
   border: `1px solid #ccc`,
   padding: 2
 }
