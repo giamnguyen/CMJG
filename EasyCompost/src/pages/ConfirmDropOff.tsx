@@ -23,7 +23,8 @@ const ConfirmDropOff: React.FC = () => {
   const { photos, takePhoto } = usePhotoGallery();
   const username = getGlobalUsername();
   const [showAlert1, setShowAlert1] = useState(false);
-  const [showCamera, setShowCamera] = useState(true);
+  const [photoTaen, setPhotoTaken] = useState(false);
+  const [showCamera, setShowCamera] = useState(false);
 
   // const [text, setText] = useState<string>();
   // const username = getGlobalUsername();
@@ -47,7 +48,7 @@ const ConfirmDropOff: React.FC = () => {
     const enterCompostTag = compostTagInputRef.current?.value;
 
     console.log(enterWeight, enterCompostTag, checked);
-    setShowAlert2(true);
+    setShowCamera(true);
   }
 
   //setShowCamera(true);
@@ -81,6 +82,7 @@ const ConfirmDropOff: React.FC = () => {
               buttonText2={'Yep, all good!'}
               show={showAlert1}
               setShow={() => setShowAlert1(false)}
+              photoTaken={() => setShowAlert2(true)}
             />
         <IonHeader>
           <IonToolbar>

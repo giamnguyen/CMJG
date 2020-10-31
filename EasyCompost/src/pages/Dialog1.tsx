@@ -22,11 +22,12 @@ interface ModalProps {
   buttonText1?: string,
   buttonText2?: string,
   show: boolean,
-  setShow: Function
+  setShow: Function,
+  photoTaken: Function
 }
 
 const Dialog1: React.FC<ModalProps> = (props) => {
-  var { header, subHeader, message, buttonText1, buttonText2, show, setShow } = props;
+  var { header, subHeader, message, buttonText1, buttonText2, show, setShow,photoTaken } = props;
   const { photos, takePhoto } = usePhotoGallery();
   
   return (
@@ -50,6 +51,7 @@ const Dialog1: React.FC<ModalProps> = (props) => {
             <IonButton color="primary" onClick={() => {
               takePhoto();
               setShow(false);
+              photoTaken(true);
               }}> 
               {buttonText2} 
             </IonButton>
