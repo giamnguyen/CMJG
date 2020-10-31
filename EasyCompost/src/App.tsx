@@ -10,7 +10,7 @@ import {
   IonLabel,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { scanOutline, personOutline, homeOutline, trophyOutline } from 'ionicons/icons';
+import { scanOutline, personOutline, homeOutline, trophyOutline, trashOutline } from 'ionicons/icons';
 
 import Tab1 from './pages/Tab1';
 import Tab3 from './pages/Tab3';
@@ -20,6 +20,7 @@ import UserInfo from './pages/UserInfo';
 import ConfirmDropOff from './pages/ConfirmDropOff';
 import Welcome from './pages/Welcome';
 import Map from './pages/Map';
+import Info from './pages/Info';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -67,6 +68,11 @@ const App: React.FC = () =>  {
                   component={Map}
                   exact={true}
                 />
+                <Route 
+                  path="/notabs/info"
+                  component={Info}
+                  exact={true}
+                />
               </IonRouterOutlet>
             )} />
             <Route
@@ -101,7 +107,7 @@ const App: React.FC = () =>  {
                           <IonLabel>Home</IonLabel>
                       </IonTabButton>
                       <IonTabButton tab="tab2" href="/tabs/confirmDrop">
-                          <IonIcon icon={scanOutline} />
+                          <IonIcon icon={trashOutline} />
                           <IonLabel>Scanning</IonLabel>
                       </IonTabButton>
                       <IonTabButton tab="tab3" href="/tabs/tab3">

@@ -71,6 +71,7 @@ const Tab1: React.FC = () => {
         <IonCard>
           <IonCardHeader>
           </IonCardHeader>
+          <Link to="/notabs/info">
           <IonCardContent>
             <IonGrid>
               <IonRow>
@@ -83,7 +84,7 @@ const Tab1: React.FC = () => {
                 </IonCol>
               </IonRow>
             </IonGrid>
-          </IonCardContent>
+          </IonCardContent></Link>
         </IonCard>
       </IonContent>
     </IonPage>
