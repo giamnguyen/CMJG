@@ -76,10 +76,10 @@ const ConfirmDropOff: React.FC = () => {
     return(
       <IonPage>
             <Dialog1  
-              header={'Wait!'}
-              subHeader={'Before you drop off, make sure\nall your products are compostable!'}
-              buttonText1={'I\'m not sure'}
-              buttonText2={'Yep, all good!'}
+              header={'All Done!'}
+              subHeader={'Survey completed! Head to\nyour nearest bin!'}
+              buttonText1={'Back to Home'}
+              buttonText2={'Continue to Scan'}
               show={showAlert1}
               setShow={() => setShowAlert1(false)}
               photoTaken={() => setShowAlert2(true)}
@@ -137,7 +137,7 @@ const ConfirmDropOff: React.FC = () => {
         </IonContent>
 
         <IonFooter>
-          <IonButton color="dark" expand="block" onClick={confirmDropOff}> Complete Drop Off </IonButton>
+          <IonButton color="dark" expand="block" onClick={confirmDropOff}> Complete Survey </IonButton>
         </IonFooter>
         
         <Dialog2  
