@@ -80,7 +80,7 @@ const Map: React.FC = () => {
             </IonRow>
             <IonRow>
             <LoadScript
-              googleMapsApiKey=""
+              googleMapsApiKey="AIzaSyAJb-a88O7ZtFTjenuS3_uLmh-nM8Jhk30"
             >
               <GoogleMap
                 mapContainerStyle={containerStyle}

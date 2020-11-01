@@ -124,7 +124,7 @@ const App: React.FC = () =>  {
             />
             <Route
               path="/"
-              render={() => <Redirect to="/notabs/welcome" />}
+              render={() => <Redirect to="/tabs/tab1" />}
               exact={true}
             />
           </IonRouterOutlet>
