@@ -9,7 +9,7 @@ import {
 } from '@ionic/react';
 import './Info.css';
 import { getGlobalUsername } from './Login';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
+//import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 //images
 import apple from '../images/infoImages/apple.png';
