@@ -73,6 +73,11 @@ const App: React.FC = () =>  {
                   component={Info}
                   exact={true}
                 />
+                <Route
+                  path="/tabs/ConfirmDrop"
+                  component={ConfirmDropOff}
+                  exact={true}
+                />
               </IonRouterOutlet>
             )} />
             <Route

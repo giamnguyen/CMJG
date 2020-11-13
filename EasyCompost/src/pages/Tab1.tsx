@@ -16,6 +16,7 @@ import { toast } from '../toast';
 import graphImg from '../images/graph.png';
 import mapImg from '../images/mapImg.png';
 import infoImg from '../images/infoImg.png';
+import trashImg from '../images/trashcan.png';
 
 //chart libary
 
@@ -49,7 +50,26 @@ const Tab1: React.FC = () => {
           </IonCardContent>
         </IonCard>
 
-        <IonCard class="bluecards">
+        <IonCard  class="bluecards">
+          <IonCardHeader>
+          </IonCardHeader>
+          <Link to="/tabs/confirmDrop">
+          <IonCardContent>
+            <IonGrid>
+              <IonRow>
+              <IonCol>
+                  <IonImg class="CardImg" src={trashImg} />
+                </IonCol>
+                <IonCol>
+                  <IonCardTitle class="CardTitle">My Surveys</IonCardTitle>
+                  <IonCardSubtitle class="CardSubtitle">VIEW YOUR SURVEYS AND COMPLETE DROP OFFS</IonCardSubtitle>
+                </IonCol>
+              </IonRow>
+            </IonGrid>
+          </IonCardContent></Link>
+        </IonCard>
+
+        <IonCard>
           <IonCardHeader>
           </IonCardHeader>
           <Link to="/notabs/map">
@@ -68,7 +88,7 @@ const Tab1: React.FC = () => {
           </IonCardContent></Link>
         </IonCard>
 
-        <IonCard>
+        <IonCard  class="bluecards">
           <IonCardHeader>
           </IonCardHeader>
           <Link to="/notabs/info">
