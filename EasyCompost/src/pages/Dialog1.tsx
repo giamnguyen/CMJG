@@ -47,8 +47,8 @@ const Dialog1: React.FC<ModalProps> = (props) => {
               </IonCardContent>
           </IonCard>
           <IonFooter>
-            <IonButton color="secondary" href="/tabs/tab1"> {buttonText1} </IonButton>
-            <IonButton color="primary" onClick={() => {
+            <IonButton color="dark" href="/tabs/tab1"> {buttonText1} </IonButton>
+            <IonButton color="dark" onClick={() => {
               takePhoto();
               setShow(false);
               photoTaken(true);

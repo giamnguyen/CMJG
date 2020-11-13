@@ -49,7 +49,7 @@ const Login: React.FC<RouteComponentProps> = ({history}) => {
             }}>
             Log In
           {/* <Link to="/tab1" style={{ color: 'white' }}> Login</Link> */}
-        <IonButton onClick={login}>Login</IonButton>
+        <IonButton color="dark" onClick={login}>Login</IonButton>
         <p>
             Don't have an account? <Link to="/notabs/register">Register</Link>
         </p>

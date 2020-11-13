@@ -63,7 +63,7 @@ const Register: React.FC<RouteComponentProps> = ({history}) => {
           placeholder="Confirm password" 
           onIonChange={(e: any) => setConfirmPassword(e.target.value)}
         />
-        <IonButton onClick={register}>Register</IonButton>
+        <IonButton color="dark" onClick={register}>Register</IonButton>
         <p>
             Already have an account? <Link to="/notabs/login">Login</Link>
         </p>

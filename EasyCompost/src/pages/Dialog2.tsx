@@ -43,7 +43,7 @@ const Dialog2: React.FC<ModalProps> = (props) => {
               </IonCardContent>
           </IonCard>
           <IonFooter>
-              <IonButton color="primary" href="/tabs/tab1"> {buttonText} </IonButton>
+              <IonButton color="dark" href="/tabs/tab1"> {buttonText} </IonButton>
           </IonFooter>
 
       </IonContent>

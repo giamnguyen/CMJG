@@ -75,7 +75,7 @@ const ConfirmDropOff: React.FC = () => {
             </IonHeader>
           <IonContent fullscreen>
             <IonFab vertical="bottom" horizontal="center" slot="fixed">
-              <IonFabButton onClick={() => {
+              <IonFabButton color="dark" onClick={() => {
                   setShowCamera(false);
                   setShowAlert1(true);
                 }}>
@@ -191,10 +191,10 @@ const ConfirmDropOff: React.FC = () => {
               <IonLabel className="ion-text-center"> Student Center Cafeteria </IonLabel>
             </IonItem> 
             <IonItem>            
-              <IonButton onClick={openCamera}>Use Survey Completed on 10/30/2020</IonButton>
+              <IonButton color="dark"onClick={openCamera}>Use Survey Completed on 10/30/2020</IonButton>
             </IonItem>
             <IonItem>            
-              <IonButton onClick={createNewSurvey}>Take New Survey</IonButton>
+              <IonButton color="dark" onClick={createNewSurvey}>Take New Survey</IonButton>
             </IonItem>
           </IonList>
         </IonContent> 
@@ -233,7 +233,7 @@ const ConfirmDropOff: React.FC = () => {
               <IonLabel className="ion-text-center"> Student Center Cafeteria </IonLabel>
             </IonItem> 
             <IonItem>            
-              <IonButton onClick={createNewSurvey}>Take New Survey</IonButton>
+              <IonButton color="dark" onClick={createNewSurvey}>Take New Survey</IonButton>
             </IonItem>
           </IonList>
         </IonContent> 
