@@ -19,6 +19,9 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+.Article{
+    padding:5%;
+}
 .ArticleTitle {
     color: black;
     font-size: x-large;
@@ -70,7 +73,64 @@ ion-card {
 }
 
 p {
-    text-align: center;
+    text-align: left;
+    font-size: medium;
+    padding: 5%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+h1 {
+    color: black;
+    font-size: large;
+    text-align: left;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;    
+    padding-left: 5%;
+    padding-top: 5%;
+    overflow: visible;
+    white-space: initial;
+
+}
+
+h2{
+    color: black;
+    font-size: medium;
+    text-align: left;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;    
+    padding-left: 5%;
+    overflow: visible;
+    white-space: initial;
     font-weight: bold;
 
+}
+
+h3{
+    color: gray;
+    font-size: small;
+    text-align: left;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    padding-left:5%;
+}
+
+h4{
+    text-align: left;
+    font-size: x-small;
+    padding: 5%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+ul {
+    text-align: left;
+    font-size: medium;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-right: 5%;
+}
+
+ion-icon {
+    padding: 3%;
+    font-size: 20px;
 }

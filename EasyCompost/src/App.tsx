@@ -83,7 +83,7 @@ const App: React.FC = () =>  {
             <Route
               path="/tabs"
               render={() => (
-                  <IonTabs>
+                  <IonTabs >
                     <IonRouterOutlet>
                       <Route
                         path="/tabs/tab1"
