@@ -19,7 +19,7 @@ const Map: React.FC = () => {
       <iframe
         width="600"
         height="450"
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC3L-8ikQ72B4-3Ic9WGDgX4BXGEB34H9Y
+        src="https://www.google.com/maps/embed/v1/place?key=ADDKEYHERE
           &q=Georgia+Tech+Student+Center">
       </iframe>
     </IonPage>
