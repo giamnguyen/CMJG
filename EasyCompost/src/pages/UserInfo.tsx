@@ -39,7 +39,8 @@ const INITIAL_STATE = {
 
 const UserInfo: React.FC<RouteComponentProps> = ({history}) => {
   const [busy, setBusy] = useState<boolean>(false);
-  const username = getGlobalUsername();
+  var user = getGlobalUsername();
+  const username = user;
 
   async function signout() {
     const res = await logout();
