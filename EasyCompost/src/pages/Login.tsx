@@ -19,6 +19,7 @@ const Login: React.FC<RouteComponentProps> = ({history}) => {
       toast('Error logging with your credentials');
     } else {
       toast('You have logged in!');
+      setGlobalUsername(username);
       history.push('/tabs/tab1');
     }
     // console.log(`${res ? 'Login success' : 'Login failed'}`);

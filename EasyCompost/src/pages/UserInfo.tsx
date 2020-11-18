@@ -30,6 +30,7 @@ import reward from '../images/reward.png';
 import { Link, RouteComponentProps } from 'react-router-dom'
 import { logout } from '../functions';
 import { toast } from '../toast';
+import { getGlobalUsername } from './Login';
 
 const { PushNotifications } = Plugins;
 const INITIAL_STATE = {
@@ -38,6 +39,8 @@ const INITIAL_STATE = {
 
 const UserInfo: React.FC<RouteComponentProps> = ({history}) => {
   const [busy, setBusy] = useState<boolean>(false);
+  const username = getGlobalUsername();
+
   async function signout() {
     const res = await logout();
     toast('User successfully registered!');
@@ -54,7 +57,7 @@ const UserInfo: React.FC<RouteComponentProps> = ({history}) => {
             <IonRow></IonRow>
             <IonRow>
             <IonCol>
-              <IonTitle size="large" class="title">USERNAME</IonTitle>
+              <IonTitle size="large" class="title">{username}</IonTitle>
             </IonCol>
             <IonCol></IonCol>
             <IonCol>
