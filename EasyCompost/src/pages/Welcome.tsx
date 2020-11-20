@@ -1,5 +1,6 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import {
   IonHeader,
   IonContent,
@@ -21,9 +22,10 @@ import './Welcome.css';
 
 const Welcome: React.FC<RouteComponentProps> = ({ history }) => {
 
-  //   const signIn = () => {};
-
-  // const register = () => {};
+  var username = localStorage.getItem('username');
+  if (username && username.length>1) {
+    return (<Redirect to="/tabs/tab1" />)
+  }
 
   return (
     <IonPage>

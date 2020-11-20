@@ -61,7 +61,7 @@ const ConfirmDropOff: React.FC = () => {
     setShowSurvey(true);
   }
   
-  var username = sessionStorage.getItem('username');
+  var username = localStorage.getItem('username');
   
   // function updateUserInfo() {
   //   firebase.database().ref('/users/' + username).once('value').then(function(snapshot) {

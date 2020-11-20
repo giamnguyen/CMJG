@@ -46,7 +46,7 @@ const UserInfo: React.FC<RouteComponentProps> = ({history}) => {
   var [daysComposting, setDaysComposting] = useState<number>(0);
   var [weightComposted, setWeightComposted] = useState<number>(0);
 
-  var username = sessionStorage.getItem('username');
+  var username = localStorage.getItem('username');
 
   firebase.database().ref('/users/' + username).once('value').then(function(snapshot) {
     setPoints(snapshot.val().points);
@@ -56,7 +56,7 @@ const UserInfo: React.FC<RouteComponentProps> = ({history}) => {
 
   async function signout() {
     const res = await logout();
-    toast('User successfully registered!');
+    localStorage.setItem('username', '');
     history.push('/notabs/welcome');
     window.location.reload();
     setBusy(false);

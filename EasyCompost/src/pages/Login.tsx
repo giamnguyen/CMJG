@@ -24,7 +24,7 @@ const Login: React.FC<RouteComponentProps> = ({history}) => {
     } else {
       toast('You have logged in!');
       setGlobalUsername(username);
-      sessionStorage.setItem('username', username);
+      localStorage.setItem('username', username);
       history.push('/tabs/tab1');
     }
     // console.log(`${res ? 'Login success' : 'Login failed'}`);
