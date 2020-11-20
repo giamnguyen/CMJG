@@ -9,6 +9,9 @@ IonImg,
 IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonGrid, IonRow, IonCol
 } from '@ionic/react';
 
+import firebase from '../firebaseConfig';
+import {useState, useRef} from 'react';
+
 //import images
 import trophy from '../images/trophy.png';
 import defaultPic from '../images/defaultPic.png'
@@ -24,7 +27,37 @@ const items: Item[] = [{
   text: ''
 }];
 
+type TopUser = {
+  username: string;
+  points: number;
+};
+
 const Tab3: React.FC = () => {
+  const top10UsersRef = useRef<TopUser[]>([]);
+  // const totalMembersRef = useRef<number>(0);
+  // const totalWeightRef = useRef<number>(0);
+  const [count, setCount] = useState<number>(0);
+  const [pount, setPount] = useState<number>(0);
+
+  firebase.database().ref('users').orderByChild('points').limitToLast(10).once('value').then(function(snapshot) {
+    var listUser = [] as TopUser[];
+    var idx = 0;
+    var totalLBS = 0;
+    snapshot.forEach(function(childSnapshot) {
+      var childKey = childSnapshot.key;
+      var childData = childSnapshot.val();
+
+      var user = {username: childKey, points: childData.points};
+      top10UsersRef.current.unshift(user as TopUser);
+      // totalMembersRef.current++;
+
+      idx++;
+      totalLBS += childData.points;
+    });
+    // setTopusers(listUser);
+    setCount(idx);
+    setPount(totalLBS);
+  });
 
   return (
     <IonPage>
@@ -37,81 +70,29 @@ const Tab3: React.FC = () => {
         <IonCard>
           <IonCardHeader>
             <IonImg class="HeaderImg" src={trophy}/>
-            <IonCardTitle class="HeaderTitle">UNIVERSITY</IonCardTitle>
-            <IonCardSubtitle class="SmallText">10,000 COMMUNITY MEMBERS</IonCardSubtitle>
-            <IonCardSubtitle class="SmallText">30k Pounds of Waste Composted</IonCardSubtitle>
+            <IonCardTitle class="HeaderTitle">Georgia Institute of Technology</IonCardTitle>
+            <IonCardSubtitle class="SmallText">{count} COMMUNITY MEMBERS</IonCardSubtitle>
+            <IonCardSubtitle class="SmallText">{pount} Pounds of Waste Composted</IonCardSubtitle>
           </IonCardHeader>
         </IonCard>
 
-        <IonCard>
-          <IonCardContent>
-            <IonGrid>
-              <IonRow>
-                <IonCol class="rankingNum">1</IonCol>
-                <IonCol class="rankingPic"><IonImg  class="profilePic" src={defaultPic}/></IonCol>
-                <IonCol class="rankingData">
-                  <p>USERNAME</p>
-                  <p>20,000 PTS.</p>
-                </IonCol>
-                <IonCol>
-                </IonCol>
-              </IonRow>
-            </IonGrid>
-          </IonCardContent>
-        </IonCard>
-
-        <IonCard>
-          <IonCardContent>
-            <IonGrid>
-              <IonRow>
-                <IonCol class="rankingNum">2</IonCol>
-                <IonCol class="rankingPic"><IonImg  class="profilePic" src={defaultPic}/></IonCol>
-                <IonCol class="rankingData">
-                  <p>USERNAME</p>
-                  <p>19,679 PTS.</p>
-                </IonCol>
-                <IonCol>
-                </IonCol>
-              </IonRow>
-            </IonGrid>
-          </IonCardContent>
-        </IonCard>
-
-
-        <IonCard>
-          <IonCardContent>
-            <IonGrid>
-              <IonRow>
-                <IonCol class="rankingNum">3</IonCol>
-                <IonCol class="rankingPic"><IonImg  class="profilePic" src={defaultPic}/></IonCol>
-                <IonCol class="rankingData">
-                  <p>USERNAME</p>
-                  <p>19,590 PTS.</p>
-                </IonCol>
-                <IonCol>
-                </IonCol>
-              </IonRow>
-            </IonGrid>
-          </IonCardContent>
-        </IonCard>
-
-        <IonCard>
-          <IonCardContent>
-            <IonGrid>
-              <IonRow>
-                <IonCol class="rankingNum">4</IonCol>
-                <IonCol class="rankingPic"><IonImg  class="profilePic" src={defaultPic}/></IonCol>
-                <IonCol class="rankingData">
-                  <p>USERNAME</p>
-                  <p>19,432 PTS.</p>
-                </IonCol>
-                <IonCol>
-                </IonCol>
-              </IonRow>
-            </IonGrid>
-          </IonCardContent>
-        </IonCard>
-
+        {top10UsersRef.current.map((u, idx) => (        
+            <IonCard key={idx}>
+              <IonCardContent>
+                <IonGrid>
+                  <IonRow>
+                    <IonCol class="rankingNum">{idx+1}</IonCol>
+                    <IonCol class="rankingPic"><IonImg  class="profilePic" src={defaultPic}/></IonCol>
+                    <IonCol class="rankingData">
+                      <p>{u.username}</p>
+                      <p>{u.points} PTS.</p>
+                    </IonCol>
+                  </IonRow>
+                </IonGrid>
+              </IonCardContent>
+            </IonCard>
+        ))}
+        
       </IonContent>
     </IonPage>
   );
