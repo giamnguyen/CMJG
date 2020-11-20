@@ -18,9 +18,10 @@ import Dialog2 from './Dialog2';
 import Dialog1 from './Dialog1';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
+import firebase from '../firebaseConfig';
 
 const ConfirmDropOff: React.FC = () => {
-  const username = getGlobalUsername();
+  // const username = getGlobalUsername();
   const [showAlert1, setShowAlert1] = useState(false);
   const [showSurvey, setShowSurvey] = useState(false);
   const [showFinalPage, setShowFinalPage] = useState(false);
@@ -39,6 +40,10 @@ const ConfirmDropOff: React.FC = () => {
   const [heavyChecked, setHeavyChecked] = useState(false);
   const [indChecked, setIndChecked] = useState(false);
 
+  var [points, setPoints] = useState<number>(0);
+  var [daysComposting, setDaysComposting] = useState<number>(0);
+  var [weightComposted, setWeightComposted] = useState<number>(0);
+
   const weightInputRef = useRef<HTMLIonInputElement>(null);
   const compostTagInputRef = useRef<HTMLIonInputElement>(null);
 
@@ -55,7 +60,24 @@ const ConfirmDropOff: React.FC = () => {
   const createNewSurvey = () => {
     setShowSurvey(true);
   }
+  
+  var username = sessionStorage.getItem('username');
+  
+  // function updateUserInfo() {
+  //   firebase.database().ref('/users/' + username).once('value').then(function(snapshot) {
+  //     setPoints(snapshot.val().points + 150);
+  //     setDaysComposting(snapshot.val().daysComposting + 1);
+  //     setWeightComposted(snapshot.val().weightComposted + 10);
+  //   });
 
+  //   firebase.database().ref('users/' + username).set({
+  //     name: username,
+  //     daysComposting: daysComposting,
+  //     points: points,
+  //     weightComposted: weightComposted
+  //   });
+  // }
+  
   const openScanner = async () => {
     const data = await BarcodeScanner.scan();
     console.log(`Barcode data: ${data.text}`);
