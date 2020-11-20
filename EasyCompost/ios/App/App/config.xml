@@ -6,5 +6,9 @@
     <param name="ios-package" value="CDVLocation"/>
   </feature>
 
+  <feature name="BarcodeScanner">
+    <param name="ios-package" value="CDVBarcodeScanner"/>
+  </feature>
+
   
 </widget>

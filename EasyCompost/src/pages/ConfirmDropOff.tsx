@@ -11,20 +11,17 @@ import
   IonList, IonItemDivider, IonItem, IonLabel, IonButton,
   IonIcon, IonCheckbox, IonFab, IonFabButton
 } from '@ionic/react';
-import { locationOutline, camera } from 'ionicons/icons'
+import { locationOutline } from 'ionicons/icons'
 import './Tab1.css';
 import { getGlobalUsername } from './Login';
-import { usePhotoGallery } from '../hooks/usePhotoGallery';
 import Dialog2 from './Dialog2';
-import Dialog1 from './Dialog1'
+import Dialog1 from './Dialog1';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 
 const ConfirmDropOff: React.FC = () => {
-  const { photos, takePhoto } = usePhotoGallery();
   const username = getGlobalUsername();
   const [showAlert1, setShowAlert1] = useState(false);
-  const [photoTaken, setPhotoTaken] = useState(false);
-  const [showCamera, setShowCamera] = useState(false);
   const [showSurvey, setShowSurvey] = useState(false);
   const [showFinalPage, setShowFinalPage] = useState(false);
 
@@ -55,36 +52,22 @@ const ConfirmDropOff: React.FC = () => {
     //setShowCamera(true);
   }
 
-  const openCamera = () => {
-    setShowCamera(true);
-    if (photoTaken) setShowAlert2(true);
-  }
-
   const createNewSurvey = () => {
     setShowSurvey(true);
   }
 
-  //setShowCamera(true);
-  if (showCamera)
-    return (
-        <IonPage>
-          <IonHeader>
-              <IonToolbar>
-                <IonTitle size="large">Drop-off Scan</IonTitle>
-              </IonToolbar>
-            </IonHeader>
-          <IonContent fullscreen>
-            <IonFab vertical="bottom" horizontal="center" slot="fixed">
-              <IonFabButton color="dark" onClick={() => {
-                  setShowCamera(false);
-                  setShowAlert1(true);
-                }}>
-                <IonIcon icon={camera}></IonIcon>
-              </IonFabButton>
-            </IonFab>
-          </IonContent>
-        </IonPage>
-    );
+  const openScanner = async () => {
+    const data = await BarcodeScanner.scan();
+    console.log(`Barcode data: ${data.text}`);
+    if ( data.text.localeCompare("EasyCompost Dropoff Complete") == 0 ) //check if they're equal 
+    {
+      console.log("Matched!");
+      setShowAlert2(true);
+    } else {
+      console.log("not");
+    }
+    //setShowFinalPage(false);
+  };
 
     if (showSurvey)
       return(
@@ -191,21 +174,13 @@ const ConfirmDropOff: React.FC = () => {
               <IonLabel className="ion-text-center"> Student Center Cafeteria </IonLabel>
             </IonItem> 
             <IonItem>            
-              <IonButton color="dark"onClick={openCamera}>Use Survey Completed on 10/30/2020</IonButton>
+              <IonButton color="dark"onClick={openScanner}>Scan Barcode</IonButton>
             </IonItem>
             <IonItem>            
               <IonButton color="dark" onClick={createNewSurvey}>Take New Survey</IonButton>
             </IonItem>
           </IonList>
         </IonContent> 
-        <Dialog2  
-                header={'Congrats!'}
-                subHeader={'You just completed a drop off! Thanks for helping the Earth.'}
-                message={'+150 PTS'}
-                buttonText={'Thanks!'}
-                show={showAlert2}
-                setShow={() => setShowAlert2(false)}
-              />
       </IonPage>
     )
 
@@ -237,6 +212,14 @@ const ConfirmDropOff: React.FC = () => {
             </IonItem>
           </IonList>
         </IonContent> 
+        <Dialog2  
+                header={'Congrats!'}
+                subHeader={'You just completed a drop off! Thanks for helping the Earth.'}
+                message={'+150 PTS'}
+                buttonText={'Thanks!'}
+                show={showAlert2}
+                setShow={() => setShowAlert2(false)}
+              />
       </IonPage>
     )
 };
