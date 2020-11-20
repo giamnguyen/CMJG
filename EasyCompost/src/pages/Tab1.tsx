@@ -72,7 +72,7 @@ const Tab1: React.FC = () => {
         <IonCard>
           <IonCardHeader>
           </IonCardHeader>
-          <Link to="/notabs/map">
+          <Link to="/tabs/map">
           <IonCardContent>
             <IonGrid>
               <IonRow>

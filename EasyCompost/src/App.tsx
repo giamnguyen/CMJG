@@ -64,11 +64,6 @@ const App: React.FC = () =>  {
                   exact={true}
                 />
                 <Route 
-                  path="/notabs/map"
-                  component={Map}
-                  exact={true}
-                />
-                <Route 
                   path="/notabs/info"
                   component={Info}
                   exact={true}
@@ -93,6 +88,11 @@ const App: React.FC = () =>  {
                       <Route
                         path="/tabs/tab3"
                         component={Tab3}
+                        exact={true}
+                      />
+                      <Route 
+                        path="/tabs/map"
+                        component={Map}
                         exact={true}
                       />
                       <Route
