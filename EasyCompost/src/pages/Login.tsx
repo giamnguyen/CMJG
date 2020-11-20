@@ -22,12 +22,6 @@ const Login: React.FC<RouteComponentProps> = ({history}) => {
     if (!res) {
       toast('Error logging with your credentials');
     } else {
-      // firebase.database().ref('users/' + username).set({
-      //   name: username,
-      //   daysComposting: 15,
-      //   points: 700,
-      //   weightComposted: 15
-      // });
       toast('You have logged in!');
       setGlobalUsername(username);
       sessionStorage.setItem('username', username);

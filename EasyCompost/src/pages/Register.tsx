@@ -12,6 +12,8 @@ import '@ionic/react/css/typography.css';
 import { toast } from '../toast';
 import { registerUser } from '../functions';
 
+import firebase from '../firebaseConfig';
+
 const Register: React.FC<RouteComponentProps> = ({history}) => {
   const [busy, setBusy] = useState<boolean>(false)
   const [username, setUsername] = useState<string>('')
@@ -34,6 +36,12 @@ const Register: React.FC<RouteComponentProps> = ({history}) => {
       }
       const res = await registerUser(username, password)
       if (res) {
+        firebase.database().ref('users/' + username).set({
+          name: username,
+          daysComposting: 1,
+          points: 100,
+          weightComposted: 10
+        });
         toast('User successfully registered!')
         history.push('/tabs/tab1');
       }

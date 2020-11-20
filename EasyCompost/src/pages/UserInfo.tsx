@@ -42,25 +42,17 @@ const INITIAL_STATE = {
 
 const UserInfo: React.FC<RouteComponentProps> = ({history}) => {
   const [busy, setBusy] = useState<boolean>(false);
-
-  // var username = null;
-  var name = null;
+  var [points, setPoints] = useState<number>(0);
+  var [daysComposting, setDaysComposting] = useState<number>(0);
+  var [weightComposted, setWeightComposted] = useState<number>(0);
 
   var username = sessionStorage.getItem('username');
-  // var user = firebase.auth().currentUser;
-  // // firebase.auth().onAuthStateChanged(function(user) {
-  //   if (user) {
-  //     username = user.email;
-  //     name = user.displayName;
-  //   } else {
-  //     // No user is signed in.
-  //   }
-  // // });
-  
 
-  // var user = firebase.auth().currentUser;
-  // var username = firebase.auth().currentUser?.email;
-  // var username = getGlobalUsername() === null ? 'jack' : getGlobalUsername();
+  firebase.database().ref('/users/' + username).once('value').then(function(snapshot) {
+    setPoints(snapshot.val().points);
+    setDaysComposting(snapshot.val().daysComposting);
+    setWeightComposted(snapshot.val().weightComposted);
+  });
 
   async function signout() {
     const res = await logout();
@@ -115,26 +107,23 @@ const UserInfo: React.FC<RouteComponentProps> = ({history}) => {
             <IonGrid>
               <IonRow>
                 <IonCol>
-                  <h1>300</h1>
+                  <h1>{daysComposting}</h1>
                   <p>Days Composting</p>
                 </IonCol>
                 <IonCol>
-                  <h1>1042</h1>
+                  <h1>{points}</h1>
                   <p>Points</p>
                 </IonCol>
                 <IonCol>
-                  <h1>40</h1>
+                  <h1>{weightComposted}</h1>
                   <p>lbs. Composted</p>
                 </IonCol>
               </IonRow>
             </IonGrid>
-
           </IonCard>
-
-
         </IonCard>
-
       </IonHeader>
+
       <IonContent fullscreen>
         <IonCard class="postCard">
           <IonCardHeader>
@@ -152,7 +141,7 @@ const UserInfo: React.FC<RouteComponentProps> = ({history}) => {
             <IonImg class="postImg" src={calendar} />
           </IonCardHeader>
           <IonCardContent class="postContent">
-            Username has been composting for 300 dats straight! That's impressive! In that time they've composted 39 lbs.
+            Username has been composting for 300 days straight! That's impressive! In that time they've composted 39 lbs.
           </IonCardContent>
         </IonCard>
 
