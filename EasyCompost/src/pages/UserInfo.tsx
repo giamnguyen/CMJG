@@ -32,6 +32,9 @@ import { logout } from '../functions';
 import { toast } from '../toast';
 import { getGlobalUsername } from './Login';
 
+import firebase from '../firebaseConfig';
+import { fingerPrint } from 'ionicons/icons';
+
 const { PushNotifications } = Plugins;
 const INITIAL_STATE = {
   notifications: [{ id: 'id', title: "Test Push", body: "This is my first push notification" }],
@@ -39,8 +42,25 @@ const INITIAL_STATE = {
 
 const UserInfo: React.FC<RouteComponentProps> = ({history}) => {
   const [busy, setBusy] = useState<boolean>(false);
-  var user = getGlobalUsername();
-  const username = user;
+
+  // var username = null;
+  var name = null;
+
+  var username = sessionStorage.getItem('username');
+  // var user = firebase.auth().currentUser;
+  // // firebase.auth().onAuthStateChanged(function(user) {
+  //   if (user) {
+  //     username = user.email;
+  //     name = user.displayName;
+  //   } else {
+  //     // No user is signed in.
+  //   }
+  // // });
+  
+
+  // var user = firebase.auth().currentUser;
+  // var username = firebase.auth().currentUser?.email;
+  // var username = getGlobalUsername() === null ? 'jack' : getGlobalUsername();
 
   async function signout() {
     const res = await logout();
@@ -58,7 +78,7 @@ const UserInfo: React.FC<RouteComponentProps> = ({history}) => {
             <IonRow></IonRow>
             <IonRow>
             <IonCol>
-              <IonTitle size="large" class="title">{username}</IonTitle>
+              <IonTitle size="large" class="title">Welcome, {username}!</IonTitle>
             </IonCol>
             <IonCol></IonCol>
             <IonCol>
@@ -81,8 +101,8 @@ const UserInfo: React.FC<RouteComponentProps> = ({history}) => {
               <IonRow>
                 <IonCol class="infoContainer">
                   <IonCardSubtitle class="SmallText">UNIVERSITY NAME</IonCardSubtitle>
-                  <IonCardTitle class="HeaderTitle">DISPLAY NAME</IonCardTitle>
-                  <IonCardSubtitle class="SmallText">USERNAME</IonCardSubtitle>
+                  <IonCardTitle class="HeaderTitle">{username}</IonCardTitle>
+                  <IonCardSubtitle class="SmallText">username</IonCardSubtitle>
                   <IonButton color="dark" class="friendsButton">FRIENDS</IonButton>
                 </IonCol>
                 <IonCol class="picContainer">
