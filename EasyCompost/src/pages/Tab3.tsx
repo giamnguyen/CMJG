@@ -40,21 +40,20 @@ const Tab3: React.FC = () => {
   const [pount, setPount] = useState<number>(0);
 
   firebase.database().ref('users').orderByChild('points').limitToLast(10).once('value').then(function(snapshot) {
-    var listUser = [] as TopUser[];
     var idx = 0;
     var totalLBS = 0;
+    top10UsersRef.current = [] as TopUser[];
     snapshot.forEach(function(childSnapshot) {
       var childKey = childSnapshot.key;
       var childData = childSnapshot.val();
 
       var user = {username: childKey, points: childData.points};
       top10UsersRef.current.unshift(user as TopUser);
-      // totalMembersRef.current++;
 
+      // totalMembersRef.current++;
       idx++;
       totalLBS += childData.points;
     });
-    // setTopusers(listUser);
     setCount(idx);
     setPount(totalLBS);
   });
