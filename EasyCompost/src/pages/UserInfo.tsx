@@ -94,7 +94,7 @@ const UserInfo: React.FC<RouteComponentProps> = ({history}) => {
                 <IonCol class="infoContainer">
                   <IonCardSubtitle class="SmallText">UNIVERSITY NAME</IonCardSubtitle>
                   <IonCardTitle class="HeaderTitle">{username}</IonCardTitle>
-                  <IonCardSubtitle class="SmallText">username</IonCardSubtitle>
+                  {/* <IonCardSubtitle class="SmallText">username</IonCardSubtitle> */}
                   <IonButton color="dark" class="friendsButton">FRIENDS</IonButton>
                 </IonCol>
                 <IonCol class="picContainer">
@@ -131,7 +131,7 @@ const UserInfo: React.FC<RouteComponentProps> = ({history}) => {
             <IonImg class="postImg" src={ribbon} />
           </IonCardHeader>
           <IonCardContent class="postContent">
-            Username has Composted 40 pounds! That't the equivalent of removing 37 pounds of C02 from the environment!
+            {username} has Composted {weightComposted} pounds! That't the equivalent of removing 37 pounds of C02 from the environment!
           </IonCardContent>
         </IonCard>
 
@@ -141,7 +141,7 @@ const UserInfo: React.FC<RouteComponentProps> = ({history}) => {
             <IonImg class="postImg" src={calendar} />
           </IonCardHeader>
           <IonCardContent class="postContent">
-            Username has been composting for 300 days straight! That's impressive! In that time they've composted 39 lbs.
+            {username} has been composting for {daysComposting} days straight! That's impressive! In that time they've composted {weightComposted} lbs.
           </IonCardContent>
         </IonCard>
 
@@ -151,7 +151,7 @@ const UserInfo: React.FC<RouteComponentProps> = ({history}) => {
             <IonImg class="postImg" src={reward} />
           </IonCardHeader>
           <IonCardContent class="postContent">
-            Username redeemed 850 points! They got a $10 giftcard to Starbucks!
+            {username} redeemed {points} points! They got a $10 giftcard to Starbucks!
           </IonCardContent>
         </IonCard>
       </IonContent>
