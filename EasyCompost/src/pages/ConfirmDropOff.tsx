@@ -17,6 +17,7 @@ import { getGlobalUsername } from './Login';
 import Dialog2 from './Dialog2';
 import Dialog1 from './Dialog1';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { toast } from '../toast';
 
 import firebase from '../firebaseConfig';
 
@@ -63,46 +64,42 @@ const ConfirmDropOff: React.FC = () => {
   
   var username = localStorage.getItem('username');
   
-  // function updateUserInfo() {
-  //   firebase.database().ref('/users/' + username).once('value').then(function(snapshot) {
-  //     setPoints(snapshot.val().points + 150);
-  //     setDaysComposting(snapshot.val().daysComposting + 1);
-  //     setWeightComposted(snapshot.val().weightComposted + 10);
-  //   });
+  function openScanner() {
+    // const data = await BarcodeScanner.scan();
+    // console.log(`Barcode data: ${data.text}`);
+    // if ( data.text.localeCompare("EasyCompost Dropoff Complete") == 0 ) //check if they're equal 
+    // {
+    //   console.log("Matched!");
+    //   setShowAlert2(true);
+    // } else {
+    //   console.log("not");
+    // }
 
-  //   firebase.database().ref('users/' + username).set({
-  //     name: username,
-  //     daysComposting: daysComposting,
-  //     points: points,
-  //     weightComposted: weightComposted
-  //   });
-  // }
-  
-  const openScanner = async () => {
-    const data = await BarcodeScanner.scan();
-    console.log(`Barcode data: ${data.text}`);
-    if ( data.text.localeCompare("EasyCompost Dropoff Complete") == 0 ) //check if they're equal 
-    {
-      console.log("Matched!");
-      setShowAlert2(true);
-    } else {
-      console.log("not");
-    }
-    //setShowFinalPage(false);
+    firebase.database().ref('/users/' + username).once('value').then(function(snapshot) {
+      firebase.database().ref('users/' + username).set({
+        name: username,
+        daysComposting: snapshot.val().daysComposting + 1,
+        points: snapshot.val().points + 150,
+        weightComposted: snapshot.val().weightComposted + 5
+      });
+    });
+
+    toast('Congrats! You just completed a drop off');
+    // setShowFinalPage(true);
   };
 
     if (showSurvey)
       return(
         <IonPage>
-              <Dialog1  
-                header={'Wait!'}
-                subHeader={'Before you drop off, make sure\nall your products are compostable!'}
-                buttonText1={'I\'m not sure'}
-                buttonText2={'Yep, all good!'}
-                show={showAlert1}
-                setShow={() => setShowAlert1(false)}
-                photoTaken={() => setShowAlert2(true)}
-              />
+          <Dialog1  
+            header={'Wait!'}
+            subHeader={'Before you drop off, make sure\nall your products are compostable!'}
+            buttonText1={'I\'m not sure'}
+            buttonText2={'Yep, all good!'}
+            show={showAlert1}
+            setShow={() => setShowAlert1(false)}
+            photoTaken={() => setShowAlert2(true)}
+          />
           <IonHeader>
             <IonToolbar>
               <IonTitle size="large" slot="secondary"> Confirm Drop Off </IonTitle>
@@ -235,13 +232,13 @@ const ConfirmDropOff: React.FC = () => {
           </IonList>
         </IonContent> 
         <Dialog2  
-                header={'Congrats!'}
-                subHeader={'You just completed a drop off! Thanks for helping the Earth.'}
-                message={'+150 PTS'}
-                buttonText={'Thanks!'}
-                show={showAlert2}
-                setShow={() => setShowAlert2(false)}
-              />
+          header={'Congrats!'}
+          subHeader={'You just completed a drop off! Thanks for helping the Earth.'}
+          message={'+150 PTS'}
+          buttonText={'Thanks!'}
+          show={showAlert2}
+          setShow={() => setShowAlert2(true)}
+        />
       </IonPage>
     )
 };
